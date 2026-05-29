@@ -41,7 +41,7 @@ export default function Home() {
             </motion.h1>
 
             <motion.p className="home-hero__sub" custom={1.5} variants={fadeUp} initial="hidden" animate="show">
-              2nd-year BCA student from <span className="blue" style={{borderBottom:'1px solid var(--blue)'}}>Kanpur</span>.
+              BCA graduate (2026) from <span className="blue" style={{borderBottom:'1px solid var(--blue)'}}>Kanpur</span>.
               I write Python, build React apps, and create Telegram bots that make 
               repetitive tasks disappear — because life's too short for manual work.
             </motion.p>

@@ -57,7 +57,7 @@ const posts = [
     tag: 'Life',
     tagColor: '#f59e0b',
     date: 'Coming soon',
-    title: 'Being a BCA student who codes more than the curriculum requires',
+    title: 'Being a BCA grad who ships more than the curriculum ever taught',
     excerpt: 'The gap between what college teaches and what you actually need to build things — and how to close it without burning out.',
     readTime: '8 min read',
     coming: true,

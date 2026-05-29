@@ -11,34 +11,40 @@ const fadeUp = {
 
 const timeline = [
   {
-    year: '2025',
+    year: '2023',
     title: 'Started BCA — Computer Applications',
-    desc: 'Enrolled at a top college in Kanpur. Officially started my CS journey, though I\'d been coding for a year already.',
+    desc: 'Enrolled in my computer applications degree in Kanpur. Officially started my programming journey, diving deep into code.',
     icon: '🎓',
   },
   {
-    year: '2025',
+    year: '2024',
     title: 'Built First Telegram Bot',
     desc: 'My first automation — a bot that auto-forwarded media between Telegram groups. Saved 3+ hours a day.',
     icon: '🤖',
   },
   {
-    year: '2025',
+    year: '2024',
     title: 'Open-Sourced 5 Projects',
     desc: 'Pushed EduDesk, Attendly, QR File Transfer, and more to GitHub. Started building in public.',
     icon: '🚀',
   },
   {
-    year: '2026',
+    year: '2025',
     title: 'Full-Stack with React + Django',
     desc: 'Levelled up — went from script kiddie to building full web apps with proper backends and databases.',
     icon: '⚡',
   },
   {
-    year: '2026',
+    year: '2025',
     title: 'Vitta Nipun & EduDesk Go Live',
     desc: 'First deployed products on Vercel. Real users, real feedback, real iteration.',
     icon: '🌐',
+  },
+  {
+    year: '2026',
+    title: 'Graduated BCA — Computer Applications',
+    desc: 'Completed my BCA degree from Kanpur in 2026. Three years of grinding algorithms by day and building real projects by night.',
+    icon: '🎓',
   },
 ];
 
@@ -47,7 +53,7 @@ const funFacts = [
   { icon: <Zap size={20} />,    text: 'If it can be automated, I will automate it' },
   { icon: <Heart size={20} />,  text: 'From Kanpur — city of leather & now code' },
   { icon: <GitHubIcon size={20} />, text: '11+ repos and counting' },
-  { icon: <GraduationCap size={20}/>, text: 'BCA 2nd year student' },
+  { icon: <GraduationCap size={20}/>, text: 'BCA graduate — Class of 2026' },
   { icon: '🐍',                 text: 'Python is my first love' },
 ];
 
@@ -75,7 +81,7 @@ export default function About() {
               </div>
               <div className="about-intro__meta-item">
                 <GraduationCap size={15} className="blue" />
-                <span>BCA — 2nd Year (2025–28)</span>
+                <span>BCA Graduate — Class of 2026</span>
               </div>
               <div className="about-intro__meta-item">
                 <span className="glow-dot" />
@@ -92,7 +98,7 @@ export default function About() {
               The story so far...
             </p>
             <p>
-              I'm Ashwani, a 2nd-year BCA student from Kanpur who figured out pretty early that 
+              I'm Ashwani, a BCA graduate (2026) from Kanpur who figured out pretty early that 
               computers should work <em>for</em> people, not the other way around.
             </p>
             <p style={{ marginTop: '16px' }}>
@@ -101,9 +107,9 @@ export default function About() {
               trackers, my work is always rooted in one idea: <strong style={{ color: '#fff' }}>make it so you never have to do it manually again.</strong>
             </p>
             <p style={{ marginTop: '16px' }}>
-              By day I'm studying computer applications. By night I'm building apps, learning new frameworks, 
-              and occasionally breaking things in interesting ways. Currently in love with TypeScript, actively 
-              exploring backend systems, and always down to build something weird and useful.
+              I spend my time building apps, learning new frameworks, and occasionally breaking things in 
+              interesting ways. Currently in love with TypeScript, actively exploring backend systems, and 
+              always down to build something weird and useful.
             </p>
             <p style={{ marginTop: '16px', fontFamily: 'var(--font-hand)', fontSize: '1.2rem', color: 'var(--muted2)' }}>
               — Ashwani, 2026 🖤

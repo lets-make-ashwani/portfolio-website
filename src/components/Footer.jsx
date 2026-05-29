@@ -57,7 +57,7 @@ export default function Footer() {
             📍 Kanpur, India
           </p>
           <p className="footer__status-item" style={{ color: 'var(--muted2)', fontSize: '0.85rem' }}>
-            🎓 BCA 2nd Year
+            🎓 BCA Graduate — 2026
           </p>
         </div>
       </div>
