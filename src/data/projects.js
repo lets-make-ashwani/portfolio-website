@@ -120,4 +120,5 @@ export const PROJECTS = [
 ];
 
 export const GITHUB_URL = 'https://github.com/lets-make-ashwani';
-export const AVATAR_URL = 'https://avatars.githubusercontent.com/u/229934518?v=4';
+export const AVATAR_URL = '/my image.png';
+
