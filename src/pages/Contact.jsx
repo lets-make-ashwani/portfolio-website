@@ -19,16 +19,42 @@ const socials = [
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState({ loading: false, success: false, error: null });
 
   const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // Opens mailto with form values as a demo
-    const body = encodeURIComponent(`Name: ${form.name}\n\n${form.message}`);
-    window.location.href = `mailto:contact@ashwani.dev?subject=${encodeURIComponent(form.subject)}&body=${body}`;
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
+    setStatus({ loading: true, success: false, error: null });
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        })
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setStatus({ loading: false, success: true, error: null });
+        setForm({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 4000);
+      } else {
+        setStatus({ loading: false, success: false, error: result.message || 'Something went wrong.' });
+      }
+    } catch (err) {
+      setStatus({ loading: false, success: false, error: 'Failed to send message. Please try again.' });
+    }
   };
 
   return (
@@ -83,6 +109,11 @@ export default function Contact() {
           <motion.div className="contact-form-wrap" custom={1} variants={fadeUp} initial="hidden" animate="show">
             <h3 className="contact-form-wrap__title">Send a message</h3>
             <form className="contact-form" onSubmit={handleSubmit}>
+              {status.error && (
+                <div style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.08)', padding: '12px 16px', borderRadius: 'var(--radius)', fontSize: '0.85rem', marginBottom: '16px', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+                  {status.error}
+                </div>
+              )}
               <div className="contact-form__row">
                 <div className="contact-form__field">
                   <label>Your Name</label>
@@ -105,11 +136,14 @@ export default function Contact() {
                 <textarea name="message" value={form.message} onChange={handleChange}
                   placeholder="Tell me about your project, idea, or just say hi..." rows={5} required />
               </div>
-              <button type="submit" className={`btn btn-primary contact-form__submit ${sent ? 'sent' : ''}`}>
-                {sent
-                  ? <><CheckCircle size={16} /> Sent!</>
-                  : <><Send size={16} /> Send Message</>
-                }
+              <button type="submit" disabled={status.loading} className={`btn btn-primary contact-form__submit ${status.success ? 'sent' : ''}`}>
+                {status.loading ? (
+                  <span>Sending...</span>
+                ) : status.success ? (
+                  <><CheckCircle size={16} /> Sent!</>
+                ) : (
+                  <><Send size={16} /> Send Message</>
+                )}
               </button>
             </form>
           </motion.div>
