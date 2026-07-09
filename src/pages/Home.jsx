@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Zap, Coffee, Code2, ExternalLink } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,18 @@ const fadeUp = {
 const featured = PROJECTS.filter(p => p.featured);
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  const scrollRotate = useTransform(scrollY, [0, 800], [0, 240]);
+
+  const rotate1 = useTransform(scrollRotate, (r) => r - 140);
+  const counterRotate1 = useTransform(scrollRotate, (r) => -(r - 140));
+
+  const rotate2 = useTransform(scrollRotate, (r) => r + 15);
+  const counterRotate2 = useTransform(scrollRotate, (r) => -(r + 15));
+
+  const rotate3 = useTransform(scrollRotate, (r) => r + 120);
+  const counterRotate3 = useTransform(scrollRotate, (r) => -(r + 120));
+
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -65,9 +77,87 @@ export default function Home() {
             <div className="home-hero__avatar-ring">
               <img src={AVATAR_URL} alt="Ashwani" className="home-hero__avatar" />
             </div>
-            <div className="home-hero__float home-hero__float--1"><Code2 size={18} className="blue" /> Python</div>
-            <div className="home-hero__float home-hero__float--2"><Zap size={18} style={{color:'#a855f7'}} /> Automation</div>
-            <div className="home-hero__float home-hero__float--3"><Coffee size={18} style={{color:'#f59e0b'}} /> Late nights</div>
+
+            {/* Orbiting float 1: Python */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: 0,
+                height: 0,
+                rotate: rotate1,
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  transform: 'translate(-50%, -50%) translateX(180px)',
+                }}
+              >
+                <motion.div
+                  style={{ rotate: counterRotate1 }}
+                >
+                  <div className="home-hero__float" style={{ position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto', animationDelay: '0s' }}>
+                    <Code2 size={18} className="blue" /> Python
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Orbiting float 2: Automation */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: 0,
+                height: 0,
+                rotate: rotate2,
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  transform: 'translate(-50%, -50%) translateX(200px)',
+                }}
+              >
+                <motion.div
+                  style={{ rotate: counterRotate2 }}
+                >
+                  <div className="home-hero__float" style={{ position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto', animationDelay: '1s' }}>
+                    <Zap size={18} style={{color:'#a855f7'}} /> Automation
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Orbiting float 3: Late nights */}
+            <motion.div
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                width: 0,
+                height: 0,
+                rotate: rotate3,
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  transform: 'translate(-50%, -50%) translateX(175px)',
+                }}
+              >
+                <motion.div
+                  style={{ rotate: counterRotate3 }}
+                >
+                  <div className="home-hero__float" style={{ position: 'relative', top: 'auto', left: 'auto', right: 'auto', bottom: 'auto', animationDelay: '2s' }}>
+                    <Coffee size={18} style={{color:'#f59e0b'}} /> Late nights
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
