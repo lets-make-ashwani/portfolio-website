@@ -155,11 +155,11 @@
 }
 
 .skills-cube:nth-child(2) {
-  translate: -60px -60px;
+  translate: -70px -40px;
 }
 
 .skills-cube:nth-child(3) {
-  translate: 60px 60px;
+  translate: 70px 40px;
 }
 
 .skills-cube div {
