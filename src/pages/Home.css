@@ -3,6 +3,9 @@
   position: relative;
   padding: 80px 0 100px;
   overflow: hidden;
+  --orbit-radius-1: 180px;
+  --orbit-radius-2: 200px;
+  --orbit-radius-3: 175px;
 }
 .home-hero__inner {
   display: grid;
@@ -159,7 +162,10 @@
   gap: 16px;
   transition: var(--transition);
 }
-.home-proj-card:hover { border-color: var(--border2); box-shadow: 0 16px 48px rgba(0,0,0,.4); }
+.home-proj-card:hover {
+  border-color: var(--proj-color, var(--blue));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .4), 0 0 20px rgba(59, 130, 246, 0.05);
+}
 .home-proj-card__emoji {
   width: 56px; height: 56px;
   border-radius: var(--radius);
@@ -214,6 +220,11 @@
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
+  .home-hero {
+    --orbit-radius-1: 145px;
+    --orbit-radius-2: 155px;
+    --orbit-radius-3: 140px;
+  }
   .home-hero__inner { 
     grid-template-columns: 1fr; 
     justify-items: center; 
@@ -223,6 +234,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 10;
   }
   .home-hero__sub {
     margin-left: auto;
@@ -235,6 +248,8 @@
     display: block; 
     margin: 80px auto 40px; 
     transform: scale(0.85);
+    position: relative;
+    z-index: 1;
   }
   .home-featured__grid { grid-template-columns: 1fr; }
   .home-stats__grid { grid-template-columns: repeat(2, 1fr); }
@@ -242,17 +257,27 @@
   .home-philosophy__grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
-  .home-hero { padding: 48px 0 60px; }
+  .home-hero { 
+    padding: 48px 0 60px;
+    --orbit-radius-1: 125px;
+    --orbit-radius-2: 135px;
+    --orbit-radius-3: 120px;
+  }
   .home-hero__title { font-size: 2.4rem; }
   .home-hero__avatar-wrap { 
-    transform: scale(0.6); 
-    margin: 30px auto -30px; 
+    transform: scale(0.65); 
+    margin: 90px auto 40px; 
   }
   .home-cta__box { padding: 32px 24px; }
 }
 @media (max-width: 480px) {
+  .home-hero {
+    --orbit-radius-1: 110px;
+    --orbit-radius-2: 120px;
+    --orbit-radius-3: 105px;
+  }
   .home-hero__avatar-wrap { 
-    transform: scale(0.5); 
-    margin: 10px auto -50px; 
+    transform: scale(0.55); 
+    margin: 70px auto 20px; 
   }
 }

@@ -92,7 +92,7 @@ export default function Home() {
               <div
                 style={{
                   position: 'absolute',
-                  transform: 'translate(-50%, -50%) translateX(180px)',
+                  transform: 'translate(-50%, -50%) translateX(var(--orbit-radius-1, 180px))',
                 }}
               >
                 <motion.div
@@ -119,7 +119,7 @@ export default function Home() {
               <div
                 style={{
                   position: 'absolute',
-                  transform: 'translate(-50%, -50%) translateX(200px)',
+                  transform: 'translate(-50%, -50%) translateX(var(--orbit-radius-2, 200px))',
                 }}
               >
                 <motion.div
@@ -146,7 +146,7 @@ export default function Home() {
               <div
                 style={{
                   position: 'absolute',
-                  transform: 'translate(-50%, -50%) translateX(175px)',
+                  transform: 'translate(-50%, -50%) translateX(var(--orbit-radius-3, 175px))',
                 }}
               >
                 <motion.div
@@ -202,6 +202,7 @@ export default function Home() {
               <motion.div key={p.id} className="home-proj-card"
                 custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
                 whileHover={{ y: -6 }}
+                style={{ '--proj-color': p.color }}
               >
                 <div className="home-proj-card__emoji" style={{ background: `${p.color}18`, border: `1px solid ${p.color}40` }}>
                   {p.emoji}
