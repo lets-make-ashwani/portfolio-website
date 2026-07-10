@@ -9,6 +9,16 @@ import Skills from './pages/Skills';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 
+import { useEffect } from 'react';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function AnimatedRoutes() {
   const location = useLocation();
   return (
@@ -28,6 +38,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="noise">
         <Navbar />
         <main>

@@ -92,3 +92,84 @@
 @media (max-width: 480px) {
   .about-facts { grid-template-columns: 1fr; }
 }
+
+/* ─── Live Resume Synced from Google Docs ─── */
+.about-live-resume {
+  padding: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-top: 24px;
+  position: relative;
+}
+
+.about-live-resume__badge {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-live-resume__content {
+  font-family: var(--font-sans);
+  color: var(--muted2);
+  line-height: 1.7;
+}
+
+.about-live-resume__content h1 {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.about-live-resume__content h2,
+.about-live-resume__content h3,
+.about-live-resume__content h4 {
+  font-size: 1.15rem;
+  color: #fff;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.about-live-resume__content p {
+  margin-bottom: 12px;
+}
+
+.about-live-resume__content ul,
+.about-live-resume__content ol {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+.about-live-resume__content li {
+  margin-bottom: 6px;
+}
+
+.about-live-resume__content a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.about-live-resume__content a:hover {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .about-live-resume {
+    padding: 24px 16px;
+  }
+  .about-live-resume__badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+}

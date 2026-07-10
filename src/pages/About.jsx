@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Coffee, Zap, Heart } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
@@ -64,6 +65,36 @@ const funFacts = [
 ];
 
 export default function About() {
+  const [liveResumeHtml, setLiveResumeHtml] = useState(null);
+
+  useEffect(() => {
+    const url = 'https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/mobilebasic';
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+
+    fetch(proxyUrl)
+      .then(res => {
+        if (!res.ok) throw new Error('Proxy error');
+        return res.json();
+      })
+      .then(data => {
+        if (!data.contents) throw new Error('No contents');
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data.contents, 'text/html');
+        const docContent = doc.querySelector('.doc-content');
+        if (docContent) {
+          // Remove inline styles to inherit theme
+          const allElements = docContent.querySelectorAll('*');
+          allElements.forEach(el => {
+            el.removeAttribute('style');
+          });
+          setLiveResumeHtml(docContent.innerHTML);
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching live resume:', err);
+      });
+  }, []);
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="container about-page">
@@ -142,6 +173,26 @@ export default function About() {
             ))}
           </div>
         </motion.div>
+
+        {liveResumeHtml && (
+          <>
+            <hr className="sep" />
+            <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              <p className="section-label">Resume</p>
+              <h2 className="section-title" style={{ marginBottom: '32px' }}>Live Experience</h2>
+              <div className="about-live-resume">
+                <div className="about-live-resume__badge">
+                  <span className="glow-dot" style={{ background: '#22c55e', boxShadow: '0 0 8px #22c55e', display: 'inline-block' }} />
+                  <span style={{ fontSize: '0.8rem', color: 'var(--muted2)' }}>Live synced with Google Docs</span>
+                </div>
+                <div 
+                  className="about-live-resume__content"
+                  dangerouslySetInnerHTML={{ __html: liveResumeHtml }}
+                />
+              </div>
+            </motion.div>
+          </>
+        )}
 
         <hr className="sep" />
 
