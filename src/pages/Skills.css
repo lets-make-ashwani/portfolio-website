@@ -172,7 +172,9 @@
 
 .skills-cube span {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   background: var(--surface);
@@ -234,4 +236,25 @@
     height: 300px;
     margin-top: 50px;
   }
+}
+
+/* 3D Icons Styling */
+.skills-cube-icon {
+  width: 22px;
+  height: 22px;
+  color: rgba(226, 226, 236, 0.4);
+  fill: currentColor;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 101;
+}
+
+.skills-cube-icon[stroke] {
+  fill: none;
+}
+
+.skills-cube span:hover .skills-cube-icon {
+  color: #fff;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  transform: scale(1.15);
 }

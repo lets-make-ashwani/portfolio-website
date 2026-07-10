@@ -76,6 +76,76 @@ const cubeSkills = [
   { name: 'Telegram API', level: 75, color: '#14b8a6', note: 'Automated chatbots — integration with webhooks, message polling, and commands' }
 ];
 
+function getSkillIcon(name) {
+  switch (name) {
+    case 'Python':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M14.25.18c.9 0 1.66.72 1.66 1.62v2.7h-3.3c-1.34 0-2.5 1.16-2.5 2.5v2.23H6.88C5.54 9.23 4.4 8.07 4.4 6.73V3.4c0-.9.76-1.62 1.66-1.62h6.58c.8 0 1.6.8 1.6 1.6V4.4h.01zm-4.5 23.64c-.9 0-1.66-.72-1.66-1.62v-2.7h3.3c1.34 0 2.5-1.16 2.5-2.5v-2.23h3.23c1.34 0 2.48 1.16 2.48 2.5v3.33c0 .9-.76 1.62-1.66 1.62h-6.58c-.8 0-1.6-.8-1.6-1.6v-1.01h-.01zM9.75 3.4a.68.68 0 1 0 0 1.36.68.68 0 0 0 0-1.36zm4.5 15.84a.68.68 0 1 0 0 1.36.68.68 0 0 0 0-1.36z"/>
+        </svg>
+      );
+    case 'React':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="skills-cube-icon">
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+          <ellipse cx="12" cy="12" rx="10" ry="3.5" />
+          <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(60 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(120 12 12)" />
+        </svg>
+      );
+    case 'Django':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M11.19 2.12v9.64h-3.4c-1.83 0-3.39.73-3.39 2.92v2.79c0 2.19 1.48 2.92 3.39 2.92h3.4v1.5h1.61V2.12h-1.61zm-1.61 16.66H7.95c-1.02 0-1.78-.32-1.78-1.42v-2.79c0-1.1.76-1.42 1.78-1.42h1.63v5.63z" />
+        </svg>
+      );
+    case 'JavaScript':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M3 3h18v18H3V3zm10.7 13.6c0 1.2-.8 2-2 2-1 0-1.7-.5-2.1-1.2l1.2-.7c.3.5.5.7.9.7.4 0 .6-.2.6-.5V11h1.4v5.6zm4.2 0c0 1.2-.8 2-2 2-1.1 0-1.8-.6-2.2-1.3l1.2-.7c.2.4.5.7.9.7.3 0 .5-.2.5-.5 0-.3-.2-.5-.8-.7l-.5-.2c-1.1-.4-1.6-.9-1.6-1.8 0-1 .8-1.8 1.9-1.8.9 0 1.6.4 2 1.1l-1.2.7c-.2-.4-.5-.5-.7-.5-.3 0-.5.2-.5.4 0 .3.2.4.8.7l.5.2c1.2.4 1.7 1 1.7 1.8z" />
+        </svg>
+      );
+    case 'TypeScript':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M3 3h18v18H3V3zm8.2 8H7v1.4h1.4v5.2h1.4v-5.2H11.2V11zm6.1 4.6c0-.8-.5-1.3-1.6-1.5l-.5-.2c-.6-.2-.8-.4-.8-.7 0-.3.2-.5.6-.5.4 0 .7.2.9.6l1.2-.7c-.4-.7-1.1-1.1-2.1-1.1-1.1 0-1.9.8-1.9 1.8 0 .8.5 1.3 1.6 1.5l.5.2c.6.2.8.4.8.7 0 .3-.2.5-.6.5-.4 0-.8-.2-1-.7l-1.2.7c.4.8 1.2 1.2 2.2 1.2 1.2 0 2-1 2-2z" />
+        </svg>
+      );
+    case 'SQL':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="skills-cube-icon">
+          <ellipse cx="12" cy="5" rx="9" ry="3" />
+          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+          <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+        </svg>
+      );
+    case 'Node.js':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M12 1L3 6v12l9 5 9-5V6L12 1zm7.5 16.15l-7.5 4.15-7.5-4.15V7.85l7.5-4.15 7.5 4.15v9.3z" />
+        </svg>
+      );
+    case 'Git/GitHub':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="skills-cube-icon">
+          <circle cx="18" cy="18" r="3" />
+          <circle cx="6" cy="6" r="3" />
+          <circle cx="6" cy="18" r="3" />
+          <path d="M18 15V9a4 4 0 0 0-4-4H9" />
+          <line x1="6" y1="9" x2="6" y2="15" />
+        </svg>
+      );
+    case 'Telegram API':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className="skills-cube-icon">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.2-.02-.08.02-1.3 1.02-3.66 2.61-.34.24-.65.35-.93.34-.31 0-.91-.17-1.36-.32-.55-.18-.99-.28-.95-.58.02-.16.24-.32.66-.49 2.58-1.12 4.31-1.86 5.17-2.21 2.47-.99 2.98-1.16 3.31-1.17.07 0 .23.02.34.1.09.07.12.17.13.27 0 .06-.01.2-.02.27z"/>
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 export default function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
   return (
@@ -160,7 +230,9 @@ export default function Skills() {
                             onMouseLeave={() => {
                               if (skill) setHoveredSkill(null);
                             }}
-                          />
+                          >
+                            {skill && getSkillIcon(skill.name)}
+                          </span>
                         );
                       })}
                     </div>
