@@ -13,7 +13,7 @@ const timeline = [
   {
     year: '2023',
     title: 'Started BCA — Computer Applications',
-    desc: 'Enrolled in my computer applications degree in Kanpur. Officially started my programming journey, diving deep into code.',
+    desc: 'Enrolled in my computer applications degree at Jagran College of Arts, Science & Commerce, Kanpur. Officially started my programming journey.',
     icon: '🎓',
   },
   {
@@ -42,9 +42,15 @@ const timeline = [
   },
   {
     year: '2026',
-    title: 'Graduated BCA — Computer Applications',
-    desc: 'Completed my BCA degree from Kanpur in 2026. Three years of grinding algorithms by day and building real projects by night.',
+    title: 'Graduated BCA — Jagran College',
+    desc: 'Completed my BCA degree from Jagran College of Arts, Science & Commerce, Kanpur. Three years of grinding algorithms by day and building real projects by night.',
     icon: '🎓',
+  },
+  {
+    year: '2026 — Present',
+    title: 'IT Intern — Brandmate Digital',
+    desc: 'Developing, maintaining, and optimizing websites and landing pages for client businesses. Implementing responsive layouts, plugin integrations, SEO, and debugging performance bottlenecks.',
+    icon: '💼',
   },
 ];
 
@@ -65,7 +71,7 @@ export default function About() {
         {/* ── Header ── */}
         <motion.div className="about-header" variants={fadeUp} initial="hidden" animate="show">
           <p className="section-label">About Me</p>
-          <h1 className="section-title">Human.<br />Coder. Builder.</h1>
+          <h1 className="section-title">I build automation<br />so you don't have to.</h1>
         </motion.div>
 
         {/* ── Intro grid ── */}
@@ -81,16 +87,21 @@ export default function About() {
               </div>
               <div className="about-intro__meta-item">
                 <GraduationCap size={15} className="blue" />
-                <span>BCA Graduate — Class of 2026</span>
+                <span>BCA Graduate — Jagran College</span>
               </div>
               <div className="about-intro__meta-item">
                 <span className="glow-dot" />
                 <span style={{ color: '#22c55e' }}>Available for freelance</span>
               </div>
             </div>
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ width: '100%', justifyContent: 'center' }}>
-              <GitHubIcon size={16} /> View GitHub
-            </a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '240px' }}>
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ justifyContent: 'center' }}>
+                <GitHubIcon size={16} /> View GitHub
+              </a>
+              <a href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ justifyContent: 'center' }}>
+                View Resume
+              </a>
+            </div>
           </motion.div>
 
           <motion.div className="about-intro__bio" custom={1} variants={fadeUp} initial="hidden" animate="show">
