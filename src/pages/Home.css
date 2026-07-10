@@ -220,11 +220,6 @@
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .home-hero {
-    --orbit-radius-1: 145px;
-    --orbit-radius-2: 155px;
-    --orbit-radius-3: 140px;
-  }
   .home-hero__inner { 
     grid-template-columns: 1fr; 
     justify-items: center; 
@@ -259,9 +254,6 @@
 @media (max-width: 600px) {
   .home-hero { 
     padding: 48px 0 60px;
-    --orbit-radius-1: 125px;
-    --orbit-radius-2: 135px;
-    --orbit-radius-3: 120px;
   }
   .home-hero__title { font-size: 2.4rem; }
   .home-hero__avatar-wrap { 
@@ -271,11 +263,6 @@
   .home-cta__box { padding: 32px 24px; }
 }
 @media (max-width: 480px) {
-  .home-hero {
-    --orbit-radius-1: 110px;
-    --orbit-radius-2: 120px;
-    --orbit-radius-3: 105px;
-  }
   .home-hero__avatar-wrap { 
     transform: scale(0.55); 
     margin: 70px auto 20px; 
