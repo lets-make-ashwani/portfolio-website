@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Skills.css';
 
 const fadeUp = {
@@ -63,19 +64,112 @@ const currently = [
   'Reading: Clean Code by Robert C. Martin',
 ];
 
+const cubeSkills = [
+  { name: 'Python',     level: 85, color: '#3b82f6', note: 'My core language — used for automation scripts, scrapers, and Telegram bots' },
+  { name: 'React',      level: 80, color: '#a855f7', note: 'Modern UI library — building reusable states, hooks, and responsive frontends' },
+  { name: 'Django',     level: 70, color: '#22c55e', note: 'Python backend framework — designing secure schemas, ORMs, and REST APIs' },
+  { name: 'JavaScript', level: 80, color: '#f59e0b', note: 'Interactive web experiences — client-side rendering and async browser APIs' },
+  { name: 'TypeScript', level: 65, color: '#06b6d4', note: 'Type-safe programming — scaling components with interfaces and generics' },
+  { name: 'SQL',        level: 70, color: '#ec4899', note: 'Relational databases — writing efficient queries, indices, and database joins' },
+  { name: 'Node.js',    level: 65, color: '#10b981', note: 'Server-side javascript runtime — building microservices and REST endpoints' },
+  { name: 'Git/GitHub', level: 82, color: '#6366f1', note: 'Version control — managing branches, pull requests, and open-source contributions' },
+  { name: 'Telegram API', level: 75, color: '#14b8a6', note: 'Automated chatbots — integration with webhooks, message polling, and commands' }
+];
+
 export default function Skills() {
+  const [hoveredSkill, setHoveredSkill] = useState(null);
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="container skills-page">
 
-        <motion.div className="skills-header" variants={fadeUp} initial="hidden" animate="show">
-          <p className="section-label">Skills</p>
-          <h1 className="section-title">What I work with</h1>
-          <p className="muted" style={{ marginTop: '12px', maxWidth: '500px' }}>
-            A snapshot of my current tech stack. The bars show relative comfort — 
-            100% would mean I'm still learning (which is always true).
-          </p>
-        </motion.div>
+        {/* 3D Hero Layout */}
+        <div className="skills-hero-layout">
+          <motion.div className="skills-hero-left" variants={fadeUp} initial="hidden" animate="show">
+            <div className="skills-header" style={{ marginBottom: 0 }}>
+              <p className="section-label">Skills</p>
+              <h1 className="section-title">What I work with</h1>
+              <p className="muted" style={{ marginTop: '12px', maxWidth: '500px' }}>
+                A snapshot of my current tech stack. Hover the interactive 3D grid on the right to inspect my core technologies and levels of comfort.
+              </p>
+            </div>
+
+            {/* Glowing Skill Details Card */}
+            <div className="skills-cube-info">
+              <AnimatePresence mode="wait">
+                {hoveredSkill ? (
+                  <motion.div 
+                    key={hoveredSkill.name}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                    className="skills-cube-card"
+                    style={{ borderColor: `${hoveredSkill.color}40` }}
+                  >
+                    <span className="skills-cube-card__dot" style={{ backgroundColor: hoveredSkill.color, boxShadow: `0 0 12px ${hoveredSkill.color}` }} />
+                    <div className="skills-cube-card__content">
+                      <h4>{hoveredSkill.name}</h4>
+                      <p className="skills-cube-card__pct" style={{ color: hoveredSkill.color }}>{hoveredSkill.level}% proficiency</p>
+                      <p className="skills-cube-card__note">{hoveredSkill.note}</p>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="skills-cube-placeholder"
+                  >
+                    <span className="glow-dot" style={{ background: 'var(--blue)', boxShadow: '0 0 8px var(--blue)' }} />
+                    <p className="muted" style={{ fontSize: '0.82rem' }}>Hover the blocks on the 3D grid to inspect skills</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+
+          {/* Interactive 3D Cube Grid */}
+          <motion.div 
+            className="skills-cube-container"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            <div className="skills-cube-grid">
+              {[0, 1, 2].map((cubeIdx) => (
+                <div key={cubeIdx} className="skills-cube" style={{ zIndex: cubeIdx === 1 ? 1 : cubeIdx === 0 ? 2 : 3 }}>
+                  {[-1, 0, 1].map((xVal) => (
+                    <div key={xVal} style={{ '--x': xVal, '--y': 0 }}>
+                      {[3, 2, 1].map((iVal) => {
+                        const isTop = iVal === 3;
+                        const skillIndex = cubeIdx * 3 + (xVal + 1);
+                        const skill = isTop ? cubeSkills[skillIndex] : null;
+                        const hoverColor = skill ? skill.color : 'var(--blue)';
+
+                        return (
+                          <span 
+                            key={iVal} 
+                            style={{ 
+                              '--i': iVal,
+                              '--hover-color': hoverColor
+                            }}
+                            onMouseEnter={() => {
+                              if (skill) setHoveredSkill(skill);
+                            }}
+                            onMouseLeave={() => {
+                              if (skill) setHoveredSkill(null);
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
         <div className="skills-grid">
           {skillGroups.map((group, gi) => (

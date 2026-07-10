@@ -57,3 +57,181 @@
 @media (max-width: 480px) {
   .skills-learning { grid-template-columns: 1fr; }
 }
+
+/* ─── 3D Cube Grid Layout ───────────────────────────────────────────── */
+.skills-hero-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.skills-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skills-cube-info {
+  height: 120px; /* fixed height to prevent content shifting */
+  display: flex;
+  align-items: center;
+}
+
+.skills-cube-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+
+.skills-cube-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.skills-cube-card__content h4 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.skills-cube-card__pct {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  margin-bottom: 6px;
+}
+
+.skills-cube-card__note {
+  font-size: 0.78rem;
+  color: var(--muted2);
+  line-height: 1.4;
+}
+
+.skills-cube-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border: 1.5px dashed var(--border2);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.skills-cube-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 380px;
+  position: relative;
+  overflow: visible;
+  margin-top: 30px;
+}
+
+.skills-cube-grid {
+  position: relative;
+  top: -20px;
+  transform: skewY(-20deg);
+}
+
+.skills-cube {
+  position: relative;
+  transition: var(--transition);
+}
+
+.skills-cube:nth-child(2) {
+  translate: -60px -60px;
+}
+
+.skills-cube:nth-child(3) {
+  translate: 60px 60px;
+}
+
+.skills-cube div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  translate: calc(-70px * var(--x)) calc(-60px * var(--y));
+}
+
+.skills-cube span {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  z-index: calc(1 * var(--i));
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.skills-cube span::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  width: 40px;
+  height: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills-cube span::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover active states */
+.skills-cube span:hover {
+  transition: 0s;
+  background: var(--hover-color, var(--blue));
+  filter: drop-shadow(0 0 25px var(--hover-color, var(--blue)));
+  border-color: transparent;
+  z-index: 100;
+}
+
+.skills-cube span:hover::before,
+.skills-cube span:hover::after {
+  transition: 0s;
+  background: var(--hover-color, var(--blue));
+  border-color: transparent;
+}
+
+@media (max-width: 992px) {
+  .skills-hero-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .skills-cube-container {
+    height: 300px;
+    margin-top: 50px;
+  }
+}
