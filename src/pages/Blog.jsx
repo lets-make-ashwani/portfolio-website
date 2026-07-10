@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ArrowLeft, Calendar, Clock } from 'lucide-react';
+import { posts } from '../data/blogPosts';
+import useSEO from '../hooks/useSEO';
 import './Blog.css';
 
 const fadeUp = {
@@ -6,147 +10,141 @@ const fadeUp = {
   show: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.45 } }),
 };
 
-const posts = [
-  {
-    id: 1,
-    emoji: '🤖',
-    tag: 'Automation',
-    tagColor: '#3b82f6',
-    date: 'May 2026',
-    title: 'How I built a Telegram bot that saves me 3 hours a day',
-    excerpt: 'The exact Python code and architecture behind my media-forwarding Telegram bot — including how to handle rate limits, media groups, and errors gracefully.',
-    readTime: '6 min read',
-    coming: false,
-  },
-  {
-    id: 2,
-    emoji: '📱',
-    tag: 'Utility',
-    tagColor: '#06b6d4',
-    date: 'April 2026',
-    title: 'QR File Transfer: No cables, no accounts, just scan',
-    excerpt: 'I built a local-network file transfer tool using QR codes. Here\'s how it works, why it\'s actually useful, and what I learned about WebSockets.',
-    readTime: '4 min read',
-    coming: false,
-  },
-  {
-    id: 3,
-    emoji: '💰',
-    tag: 'Project',
-    tagColor: '#22c55e',
-    date: 'May 2026',
-    title: 'Building Vitta Nipun: My first TypeScript project',
-    excerpt: 'Why I switched from JavaScript to TypeScript mid-project, what broke, what got better, and whether I\'d do it again (yes).',
-    readTime: '7 min read',
-    coming: false,
-  },
-  {
-    id: 4,
-    emoji: '⚡',
-    tag: 'Tips',
-    tagColor: '#a855f7',
-    date: 'Coming soon',
-    title: 'Python tricks that make you look like a wizard',
-    excerpt: 'List comprehensions, generators, context managers, decorators — the Python features that made me fall in love with the language.',
-    readTime: '5 min read',
-    coming: true,
-  },
-  {
-    id: 5,
-    emoji: '🎓',
-    tag: 'Life',
-    tagColor: '#f59e0b',
-    date: 'Coming soon',
-    title: 'Being a BCA grad who ships more than the curriculum ever taught',
-    excerpt: 'The gap between what college teaches and what you actually need to build things — and how to close it without burning out.',
-    readTime: '8 min read',
-    coming: true,
-  },
-  {
-    id: 6,
-    emoji: '🔧',
-    tag: 'Django',
-    tagColor: '#10b981',
-    date: 'Coming soon',
-    title: 'Django REST Framework: A beginner\'s honest review',
-    excerpt: 'I\'m learning DRF right now. Here\'s what confuses me, what clicks, and how I\'m structuring my learning to actually retain it.',
-    readTime: '6 min read',
-    coming: true,
-  },
-];
-
-import useSEO from '../hooks/useSEO';
-
 export default function Blog() {
+  const [selectedPost, setSelectedPost] = useState(null);
+
   useSEO({
-    title: 'Blog & Build Logs',
-    description: 'Read software guides, learning journals, and development build logs written by Ashwani Vishwakarma. Covers Python scripting and full-stack development.'
+    title: selectedPost ? selectedPost.title : 'Blog & Build Logs',
+    description: selectedPost ? selectedPost.excerpt : 'Read software guides, learning journals, and development build logs written by Ashwani Vishwakarma. Covers Python scripting and full-stack development.'
   });
+
+  const handleBack = () => {
+    setSelectedPost(null);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="container blog-page">
+        {selectedPost ? (
+          // Full post view
+          <motion.article 
+            className="blog-post-view"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+          >
+            <button className="blog-post-back" onClick={handleBack}>
+              <ArrowLeft size={16} />
+              <span>Back to Articles</span>
+            </button>
 
-        <motion.div className="blog-header" variants={fadeUp} initial="hidden" animate="show">
-          <p className="section-label">Blog</p>
-          <h1 className="section-title">Thoughts & <br />Build Logs</h1>
-          <p className="muted" style={{ marginTop: '12px', maxWidth: '480px' }}>
-            I write about things I'm building, lessons I'm learning, and opinions I have about code.
-            No fluff — just real stuff from the keyboard.
-          </p>
-        </motion.div>
-
-        <div className="blog-grid">
-          {posts.map((post, i) => (
-            <motion.article
-              key={post.id}
-              className={`blog-card ${post.coming ? 'blog-card--coming' : ''}`}
-              custom={i * 0.1} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
-              whileHover={!post.coming ? { y: -5 } : {}}
-              style={{ '--post-color': post.tagColor }}
-            >
-              <div className="blog-card__top">
-                <span className="blog-card__emoji">{post.emoji}</span>
-                <span className="blog-card__tag" style={{ color: post.tagColor, background: `${post.tagColor}15`, borderColor: `${post.tagColor}35` }}>
-                  {post.tag}
+            <header className="blog-post-header">
+              <span className="blog-post-tag" style={{ color: selectedPost.tagColor, background: `${selectedPost.tagColor}15`, borderColor: `${selectedPost.tagColor}35` }}>
+                {selectedPost.tag}
+              </span>
+              <h1 className="blog-post-title">{selectedPost.title}</h1>
+              <div className="blog-post-meta muted mono">
+                <span className="meta-item">
+                  <Calendar size={14} />
+                  <span>{selectedPost.date}</span>
+                </span>
+                <span className="meta-item">
+                  <Clock size={14} />
+                  <span>{selectedPost.readTime}</span>
                 </span>
               </div>
-              <div className="blog-card__body">
-                <h2 className="blog-card__title">{post.title}</h2>
-                <p className="blog-card__excerpt">{post.excerpt}</p>
-              </div>
-              <div className="blog-card__footer">
-                <span className="blog-card__date muted mono">{post.date}</span>
-                <span className="blog-card__read muted mono">{post.readTime}</span>
-                {post.coming
-                  ? <span className="blog-card__coming">Coming soon</span>
-                  : <button className="blog-card__cta">Read →</button>
-                }
-              </div>
-            </motion.article>
-          ))}
-        </div>
+            </header>
 
-        <motion.div className="blog-newsletter" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-          <p className="handwritten" style={{ fontSize: '2rem', color: 'var(--blue)', marginBottom: '8px' }}>
-            Want to be notified?
-          </p>
-          <p className="muted" style={{ marginBottom: '20px' }}>
-            I'll send an email when new posts go live. No spam — promise.
-          </p>
-          <div className="blog-newsletter__form">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="blog-newsletter__input"
+            <hr className="blog-post-divider" />
+
+            <div 
+              className="blog-post-content" 
+              dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             />
-            <button className="btn btn-primary">Notify me</button>
-          </div>
-          <p className="muted" style={{ fontSize: '0.75rem', marginTop: '10px' }}>
-            Blog is a work in progress — posts are coming soon!
-          </p>
-        </motion.div>
+          </motion.article>
+        ) : (
+          // Blog index list view
+          <>
+            <motion.div className="blog-header" variants={fadeUp} initial="hidden" animate="show">
+              <p className="section-label">Blog</p>
+              <h1 className="section-title">Thoughts & <br />Build Logs</h1>
+              <p className="muted" style={{ marginTop: '12px', maxWidth: '480px' }}>
+                I write about things I'm building, lessons I'm learning, and opinions I have about code.
+                No fluff — just real stuff from the keyboard.
+              </p>
+            </motion.div>
 
+            <div className="blog-grid">
+              {posts.map((post, i) => {
+                const IconComponent = post.icon;
+                return (
+                  <motion.article
+                    key={post.id}
+                    className={`blog-card ${post.coming ? 'blog-card--coming' : ''}`}
+                    custom={i * 0.1} 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="show" 
+                    viewport={{ once: true }}
+                    whileHover={!post.coming ? { y: -5 } : {}}
+                    onClick={() => {
+                      if (!post.coming) {
+                        setSelectedPost(post);
+                        window.scrollTo(0, 0);
+                      }
+                    }}
+                    style={{ '--post-color': post.tagColor }}
+                  >
+                    <div className="blog-card__top">
+                      {IconComponent && <IconComponent size={22} className="blog-card__icon" style={{ color: post.tagColor }} />}
+                      <span className="blog-card__tag" style={{ color: post.tagColor, background: `${post.tagColor}15`, borderColor: `${post.tagColor}35` }}>
+                        {post.tag}
+                      </span>
+                    </div>
+                    <div className="blog-card__body">
+                      <h2 className="blog-card__title">{post.title}</h2>
+                      <p className="blog-card__excerpt">{post.excerpt}</p>
+                    </div>
+                    <div className="blog-card__footer">
+                      <span className="blog-card__date muted mono">{post.date}</span>
+                      <span className="blog-card__read muted mono">{post.readTime}</span>
+                      {post.coming ? (
+                        <span className="blog-card__coming">Coming soon</span>
+                      ) : (
+                        <button className="blog-card__cta" onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedPost(post);
+                          window.scrollTo(0, 0);
+                        }}>Read →</button>
+                      )}
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
+
+            <motion.div className="blog-newsletter" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              <p className="handwritten" style={{ fontSize: '2rem', color: 'var(--blue)', marginBottom: '8px' }}>
+                Want to be notified?
+              </p>
+              <p className="muted" style={{ marginBottom: '20px' }}>
+                I'll send an email when new posts go live. No spam — promise.
+              </p>
+              <div className="blog-newsletter__form">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="blog-newsletter__input"
+                />
+                <button className="btn btn-primary">Notify me</button>
+              </div>
+              <p className="muted" style={{ fontSize: '0.75rem', marginTop: '10px' }}>
+                More posts are coming soon!
+              </p>
+            </motion.div>
+          </>
+        )}
       </div>
     </motion.div>
   );
