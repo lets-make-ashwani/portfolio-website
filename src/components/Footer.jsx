@@ -6,7 +6,7 @@ import './Footer.css';
 const socials = [
   { icon: <GitHubIcon size={18}/>,   href: 'https://github.com/lets-make-ashwani', label: 'GitHub'   },
   { icon: <LinkedinIcon size={18}/>, href: 'https://www.linkedin.com/in/ashwani-vishwakarma-54104432a/', label: 'LinkedIn' },
-  { icon: <TwitterIcon size={18}/>,  href: 'https://twitter.com/ashwani',           label: 'Twitter'  },
+  { icon: <TwitterIcon size={18}/>,  href: 'https://x.com/ashwaniVish1508',           label: 'Twitter'  },
   { icon: <Mail size={18}/>,         href: 'mailto:contact@ashwani.dev',            label: 'Email'    },
 ];
 
