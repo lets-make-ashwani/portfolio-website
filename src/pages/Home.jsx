@@ -9,6 +9,7 @@ import { GitHubIcon } from '../components/BrandIcons';
 import { Link } from 'react-router-dom';
 import { PROJECTS, GITHUB_URL, AVATAR_URL } from '../data/projects';
 import './Home.css';
+import useSEO from '../hooks/useSEO';
 
 const iconMap = {
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
@@ -27,6 +28,11 @@ const fadeUp = {
 const featured = PROJECTS.filter(p => p.featured);
 
 export default function Home() {
+  useSEO({ 
+    title: 'Full-Stack Developer & Automation Specialist', 
+    description: 'Personal portfolio of Ashwani Vishwakarma, full-stack developer and AI automation specialist. I build automations so you don\'t have to.' 
+  });
+  
   const { scrollY } = useScroll();
   const scrollRotate = useTransform(scrollY, [0, 800], [0, 240]);
 

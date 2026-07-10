@@ -22,7 +22,14 @@ const fadeUp = {
   show: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.07, duration: 0.45 } }),
 };
 
+import useSEO from '../hooks/useSEO';
+
 export default function Projects() {
+  useSEO({
+    title: 'Projects - Software Portfolio',
+    description: 'Explore full-stack apps, AI automation programs, tools, and scripts developed by Ashwani Vishwakarma. Built using React, Python, Node, and Django.'
+  });
+
   const [active, setActive] = useState('All');
 
   const filtered = PROJECTS.filter(p => {

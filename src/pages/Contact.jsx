@@ -4,6 +4,7 @@ import { Mail, MessageCircle, MapPin, Send, CheckCircle } from 'lucide-react';
 import { GitHubIcon, LinkedinIcon } from '../components/BrandIcons';
 import { GITHUB_URL } from '../data/projects';
 import './Contact.css';
+import useSEO from '../hooks/useSEO';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -18,6 +19,11 @@ const socials = [
 ];
 
 export default function Contact() {
+  useSEO({
+    title: 'Contact Me',
+    description: 'Get in touch with Ashwani Vishwakarma for software development, automation, and project collaborations.'
+  });
+
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState({ loading: false, success: false, error: null });
 

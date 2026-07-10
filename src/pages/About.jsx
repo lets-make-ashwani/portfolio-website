@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, GraduationCap, Coffee, Zap, Heart } from 'lucide-react';
+import { MapPin, GraduationCap, Coffee, Zap, Heart, Download } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { AVATAR_URL, GITHUB_URL } from '../data/projects';
 import './About.css';
@@ -64,7 +64,14 @@ const funFacts = [
   { icon: '🐍',                 text: 'Python is my first love' },
 ];
 
+import useSEO from '../hooks/useSEO';
+
 export default function About() {
+  useSEO({
+    title: 'About Me - Automation Builder',
+    description: 'Learn about Ashwani Vishwakarma, a BCA graduate from Kanpur and IT Intern at Brandmate Digital. Specializes in building full-stack web applications and automation bots.'
+  });
+
   const [liveResumeHtml, setLiveResumeHtml] = useState(null);
 
   useEffect(() => {
@@ -134,7 +141,7 @@ export default function About() {
                   View Resume
                 </a>
                 <a href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/export?format=pdf" target="_blank" rel="noopener noreferrer" className="btn btn-ghost" title="Download PDF" style={{ width: '46px', padding: 0, justifyContent: 'center' }}>
-                  📥
+                  <Download size={16} />
                 </a>
               </div>
             </div>

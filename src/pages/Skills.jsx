@@ -146,7 +146,14 @@ function getSkillIcon(name) {
   }
 }
 
+import useSEO from '../hooks/useSEO';
+
 export default function Skills() {
+  useSEO({
+    title: 'Skills & Technologies',
+    description: 'Explore the tech stack of Ashwani Vishwakarma, including React, Node, Python, Django, MongoDB, SQL, and Git. Check interactive skill proficiencies.'
+  });
+
   const [hoveredSkill, setHoveredSkill] = useState(null);
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

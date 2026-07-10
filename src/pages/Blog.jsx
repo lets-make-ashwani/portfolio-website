@@ -75,7 +75,14 @@ const posts = [
   },
 ];
 
+import useSEO from '../hooks/useSEO';
+
 export default function Blog() {
+  useSEO({
+    title: 'Blog & Build Logs',
+    description: 'Read software guides, learning journals, and development build logs written by Ashwani Vishwakarma. Covers Python scripting and full-stack development.'
+  });
+
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
       <div className="container blog-page">
