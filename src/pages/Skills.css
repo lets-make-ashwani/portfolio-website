@@ -155,14 +155,14 @@
 }
 
 .skills-cube:nth-child(2) {
-  translate: -70px -40px;
+  translate: -60px -60px;
 }
 
 .skills-cube:nth-child(3) {
-  translate: 70px 40px;
+  translate: 60px 60px;
 }
 
-.skills-cube div {
+.skills-cube > div {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -177,16 +177,33 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: var(--surface);
-  border: 1px solid var(--border);
   z-index: calc(1 * var(--i));
   transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 
-.skills-cube span::before {
-  content: "";
+/* 3D Faces */
+.skills-cube .face {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skills-cube .face--top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  z-index: 3;
+}
+
+.skills-cube .face--left {
+  top: 0;
   left: -40px;
   width: 40px;
   height: 100%;
@@ -194,12 +211,10 @@
   border: 1px solid var(--border);
   transform-origin: right;
   transform: skewY(45deg);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
 }
 
-.skills-cube span::after {
-  content: "";
-  position: absolute;
+.skills-cube .face--right {
   top: -40px;
   left: 0px;
   width: 100%;
@@ -208,20 +223,23 @@
   border: 1px solid var(--border);
   transform-origin: bottom;
   transform: skewX(45deg);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
 }
 
 /* Hover active states */
 .skills-cube span:hover {
+  z-index: 100;
+}
+
+.skills-cube span:hover .face--top {
   transition: 0s;
   background: var(--hover-color, var(--blue));
   filter: drop-shadow(0 0 25px var(--hover-color, var(--blue)));
   border-color: transparent;
-  z-index: 100;
 }
 
-.skills-cube span:hover::before,
-.skills-cube span:hover::after {
+.skills-cube span:hover .face--left,
+.skills-cube span:hover .face--right {
   transition: 0s;
   background: var(--hover-color, var(--blue));
   border-color: transparent;
