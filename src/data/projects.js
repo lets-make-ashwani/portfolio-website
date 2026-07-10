@@ -136,7 +136,7 @@ export const PROJECTS = [
     repo: 'anytimegaming',
     description: 'A dedicated web hub for gamers — schedule sessions, organize multiplayer matches, track gaming achievements, and build gaming community events.',
     lang: 'TypeScript',
-    live: null,
+    live: 'https://anytimegaming.vercel.app/',
     github: 'https://github.com/lets-make-ashwani/anytimegaming',
     tags: ['TypeScript', 'Gaming', 'Community'],
     emoji: '🎮',
