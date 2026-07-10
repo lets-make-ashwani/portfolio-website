@@ -1,9 +1,20 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Star } from 'lucide-react';
+import { 
+  ExternalLink, Star, Code2,
+  Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
+  Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
+  Briefcase, Layers, ClipboardList
+} from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { PROJECTS, GITHUB_URL } from '../data/projects';
 import './Projects.css';
+
+const iconMap = {
+  Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
+  Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
+  Briefcase, Layers, ClipboardList
+};
 
 const filters = ['All', 'TypeScript', 'JavaScript', 'Featured'];
 const fadeUp = {
@@ -64,7 +75,10 @@ export default function Projects() {
                 {/* Top bar */}
                 <div className="proj-card__top">
                   <div className="proj-card__emoji" style={{ background: `${p.color}14`, border: `1px solid ${p.color}35` }}>
-                    {p.emoji}
+                    {(() => {
+                      const IconComponent = iconMap[p.icon] || Code2;
+                      return <IconComponent size={22} style={{ color: p.color }} />;
+                    })()}
                   </div>
                   <div className="proj-card__top-right">
                     {p.featured && (

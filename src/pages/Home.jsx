@@ -1,9 +1,20 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Zap, Coffee, Code2, ExternalLink } from 'lucide-react';
+import { 
+  ArrowRight, Zap, Coffee, Code2, ExternalLink,
+  Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
+  Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
+  Briefcase, Layers, ClipboardList
+} from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { Link } from 'react-router-dom';
 import { PROJECTS, GITHUB_URL, AVATAR_URL } from '../data/projects';
 import './Home.css';
+
+const iconMap = {
+  Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
+  Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
+  Briefcase, Layers, ClipboardList
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -205,7 +216,10 @@ export default function Home() {
                 style={{ '--proj-color': p.color }}
               >
                 <div className="home-proj-card__emoji" style={{ background: `${p.color}18`, border: `1px solid ${p.color}40` }}>
-                  {p.emoji}
+                  {(() => {
+                    const IconComponent = iconMap[p.icon] || Code2;
+                    return <IconComponent size={22} style={{ color: p.color }} />;
+                  })()}
                 </div>
                 <div className="home-proj-card__body">
                   <h3 className="home-proj-card__name">{p.name}</h3>
