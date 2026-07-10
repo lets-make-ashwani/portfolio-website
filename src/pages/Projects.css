@@ -47,7 +47,10 @@
   transition: var(--transition);
   cursor: default;
 }
-.proj-card:hover { border-color: var(--border2); box-shadow: 0 16px 48px rgba(0,0,0,.4); }
+.proj-card:hover {
+  border-color: var(--proj-color, var(--blue));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .4), 0 0 20px rgba(59, 130, 246, 0.05);
+}
 
 .proj-card__top {
   display: flex;

@@ -129,9 +129,14 @@ export default function About() {
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost" style={{ justifyContent: 'center' }}>
                 <GitHubIcon size={16} /> View GitHub
               </a>
-              <a href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ justifyContent: 'center' }}>
-                View Resume
-              </a>
+              <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                <a href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
+                  View Resume
+                </a>
+                <a href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/export?format=pdf" target="_blank" rel="noopener noreferrer" className="btn btn-ghost" title="Download PDF" style={{ width: '46px', padding: 0, justifyContent: 'center' }}>
+                  📥
+                </a>
+              </div>
             </div>
           </motion.div>
 

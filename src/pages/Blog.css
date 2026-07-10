@@ -18,8 +18,8 @@
   cursor: pointer;
 }
 .blog-card:hover:not(.blog-card--coming) {
-  border-color: var(--border2);
-  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+  border-color: var(--post-color, var(--blue));
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .4), 0 0 20px rgba(59, 130, 246, 0.05);
 }
 .blog-card--coming { opacity: 0.65; cursor: default; }
 .blog-card__top { display: flex; align-items: center; justify-content: space-between; }

@@ -96,6 +96,7 @@ export default function Blog() {
               className={`blog-card ${post.coming ? 'blog-card--coming' : ''}`}
               custom={i * 0.1} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}
               whileHover={!post.coming ? { y: -5 } : {}}
+              style={{ '--post-color': post.tagColor }}
             >
               <div className="blog-card__top">
                 <span className="blog-card__emoji">{post.emoji}</span>

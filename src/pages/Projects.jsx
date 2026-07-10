@@ -59,6 +59,7 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 className="proj-card"
                 whileHover={{ y: -6 }}
+                style={{ '--proj-color': p.color }}
               >
                 {/* Top bar */}
                 <div className="proj-card__top">
