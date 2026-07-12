@@ -224,4 +224,4 @@ export const PROJECTS = [
 ];
 
 export const GITHUB_URL = 'https://github.com/lets-make-ashwani';
-export const AVATAR_URL = '/my image.png';
+export const AVATAR_URL = '/my image.webp';
