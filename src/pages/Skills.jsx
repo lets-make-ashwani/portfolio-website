@@ -286,7 +286,16 @@ export default function Skills() {
 
   const [hoveredSkill, setHoveredSkill] = useState(null);
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    <motion.div
+      variants={{
+        initial: { opacity: 0, y: 16 },
+        animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1] } },
+        exit: { opacity: 0, y: -16, transition: { duration: 0.25, ease: [0.25, 1, 0.5, 1] } }
+      }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <div className="container skills-page">
 
         {/* 3D Hero Layout */}

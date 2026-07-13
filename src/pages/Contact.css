@@ -1,4 +1,4 @@
-.contact-page { padding: 64px 0 100px; }
+.contact-page { padding-top: 64px; padding-bottom: 100px; }
 .contact-header { margin-bottom: 56px; }
 .contact-header__status {
   display: inline-flex;
