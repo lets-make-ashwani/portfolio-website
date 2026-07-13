@@ -3,7 +3,7 @@ import {
   ArrowRight, Zap, Coffee, Code2, ExternalLink,
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
   Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
-  Briefcase, Layers, ClipboardList
+  Briefcase, Layers, ClipboardList, Compass
 } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ import useSEO from '../hooks/useSEO';
 const iconMap = {
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
   Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
-  Briefcase, Layers, ClipboardList
+  Briefcase, Layers, ClipboardList, Compass
 };
 
 const fadeUp = {

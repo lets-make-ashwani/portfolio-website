@@ -4,7 +4,7 @@ import {
   ExternalLink, Star, Code2,
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
   Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
-  Briefcase, Layers, ClipboardList
+  Briefcase, Layers, ClipboardList, Compass
 } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
 import { PROJECTS, GITHUB_URL } from '../data/projects';
@@ -13,7 +13,7 @@ import './Projects.css';
 const iconMap = {
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
   Captions, Clock, Search, Gamepad2, School, BarChart3, Brain, 
-  Briefcase, Layers, ClipboardList
+  Briefcase, Layers, ClipboardList, Compass
 };
 
 const filters = ['All', 'TypeScript', 'JavaScript', 'Featured'];

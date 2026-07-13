@@ -1,6 +1,19 @@
 // Real GitHub projects from https://github.com/lets-make-ashwani
 export const PROJECTS = [
   {
+    id: 18,
+    name: 'Lumière Paris',
+    repo: 'travel-website',
+    description: 'A premium, interactive scrolling landing page for Lumière Paris. Features scroll-driven canvas airplane arrival sequence (300 frames), intelligent preloader caching, and a luxurious glassmorphic UI.',
+    lang: 'TypeScript',
+    live: 'https://travel-website-azure-beta.vercel.app/',
+    github: 'https://github.com/lets-make-ashwani/travel-website',
+    tags: ['TypeScript', 'Tailwind', 'Interactive', 'Canvas'],
+    icon: 'Compass',
+    color: '#a855f7',
+    featured: true,
+  },
+  {
     id: 1,
     name: 'Vitta Nipun',
     repo: 'Vitta-Nipun',
