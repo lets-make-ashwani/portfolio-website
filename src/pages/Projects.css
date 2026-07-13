@@ -49,7 +49,7 @@
 }
 .proj-card:hover {
   border-color: var(--proj-color, var(--blue));
-  box-shadow: 0 16px 48px rgba(0, 0, 0, .4), 0 0 20px rgba(59, 130, 246, 0.05);
+  box-shadow: var(--shadow-main);
 }
 
 .proj-card__top {
@@ -97,7 +97,7 @@
 }
 .proj-card__link:hover { color: var(--blue); }
 .proj-card__link--live { color: var(--blue); margin-left: auto; }
-.proj-card__link--live:hover { color: #60a5fa; }
+.proj-card__link--live:hover { color: var(--blue-hover); }
 .proj-card__link--disabled { font-size: 0.82rem; color: var(--border2); margin-left: auto; cursor: default; }
 
 .projects-cta {

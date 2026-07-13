@@ -33,9 +33,65 @@
   --radius:    14px;
   --radius-lg: 24px;
   --transition: 0.3s cubic-bezier(.4,0,.2,1);
+
+  /* Semantic Design Tokens - Dark Theme (LOCKED values) */
+  --page-bg:               var(--bg);
+  --surface-bg:            var(--surface);
+  --surface-bg2:           var(--surface2);
+  
+  --text-primary:          var(--heading);
+  --text-secondary:        var(--text);
+  --text-muted:            var(--muted2);
+  --text-dim:              var(--muted);
+  
+  --border-subtle:         var(--border);
+  --border-medium:         var(--border2);
+  
+  --shadow-main:           0 16px 48px var(--shadow), 0 0 20px rgba(59, 130, 246, 0.05);
+  --shadow-glow:           0 0 24px rgba(59,130,246,.35);
+  --shadow-glow-hover:     0 0 36px rgba(59,130,246,.5);
+  
+  --btn-primary-bg:        var(--blue);
+  --btn-primary-text:      #ffffff;
+  --btn-primary-shadow:    var(--shadow-glow);
+  --btn-primary-hover-bg:  #2563eb;
+  --btn-primary-hover-shadow: var(--shadow-glow-hover);
+  
+  --btn-ghost-bg:          transparent;
+  --btn-ghost-text:        var(--text);
+  --btn-ghost-border:      var(--border2);
+  --btn-ghost-hover-bg:    transparent;
+  --btn-ghost-hover-border: var(--blue);
+  --btn-ghost-hover-text:  var(--blue);
+  
+  --card-bg:               var(--surface);
+  --card-border:           var(--border);
+  --card-hover-border:     var(--border2);
+  --card-shadow:           var(--shadow);
+  
+  --input-bg:              var(--bg2);
+  --input-text:            var(--text);
+  --input-border:          var(--border2);
+  --input-placeholder:     var(--muted);
+  --input-focus-border:    var(--blue);
+  --input-focus-shadow:    0 0 0 3px rgba(59,130,246,.1);
+  
+  --nav-bg:                var(--navbar-bg);
+  --nav-drawer-bg:         var(--navbar-drawer-bg);
+  --nav-link:              var(--muted2);
+  --nav-link-hover:        var(--heading);
+  --nav-link-active:       var(--heading);
+  --nav-link-active-bg:    var(--surface2);
+  
+  --icon-color:            var(--cube-icon-color);
+  
+  --blue-hover:            #60a5fa;
+  --selection-bg:          rgba(59,130,246,.3);
+  --selection-color:       #ffffff;
 }
 
 [data-theme='light'] {
+  /* Brand/Core colors - Redesigned for Light Mode */
   --bg:        #f8fafc;
   --bg2:       #f1f5f9;
   --bg3:       #e2e8f0;
@@ -43,19 +99,74 @@
   --surface2:  #f1f5f9;
   --border:    #e2e8f0;
   --border2:   #cbd5e1;
-  --blue:      #2563eb;
+  --blue:      #3b66f5; /* Custom premium royal/indigo brand blue */
   --blue-dim:  #1d4ed8;
-  --blue-glow: rgba(37,99,235,.15);
-  --purple:    #9333ea;
-  --green:     #16a34a;
-  --text:      #334155;
-  --muted:     #64748b;
-  --muted2:    #475569;
-  --heading:   #0f172a;
+  --blue-glow: rgba(59, 102, 245, 0.12);
+  --purple:    #8b5cf6; /* Softer light-optimized purple */
+  --green:     #10b981; /* Premium green */
+  --text:      #475569; /* Slate-600 */
+  --muted:     #64748b; /* Slate-500 */
+  --muted2:    #334155; /* Slate-700 */
+  --heading:   #0f172a; /* Slate-900 */
   --navbar-bg: rgba(248, 250, 252, 0.85);
   --navbar-drawer-bg: rgba(248, 250, 252, 0.98);
-  --cube-icon-color: rgba(51, 65, 85, 0.4);
-  --shadow:    rgba(15, 23, 42, 0.06);
+  --cube-icon-color: rgba(71, 85, 105, 0.4);
+  --shadow:    rgba(15, 23, 42, 0.05);
+
+  /* Semantic Design Tokens - Light Theme Redesign */
+  --page-bg:               var(--bg);
+  --surface-bg:            var(--surface);
+  --surface-bg2:           #f8fafc;
+  
+  --text-primary:          var(--heading);
+  --text-secondary:        var(--text);
+  --text-muted:            var(--muted);
+  --text-dim:              var(--muted);
+  
+  --border-subtle:         var(--border);
+  --border-medium:         var(--border2);
+  
+  --shadow-main:           0 16px 48px var(--shadow), 0 0 20px rgba(59, 102, 245, 0.02);
+  --shadow-glow:           0 4px 16px rgba(59, 102, 245, 0.16);
+  --shadow-glow-hover:     0 8px 24px rgba(59, 102, 245, 0.28);
+  
+  --btn-primary-bg:        var(--blue);
+  --btn-primary-text:      #ffffff;
+  --btn-primary-shadow:    var(--shadow-glow);
+  --btn-primary-hover-bg:  #254adb;
+  --btn-primary-hover-shadow: var(--shadow-glow-hover);
+  
+  --btn-ghost-bg:          transparent;
+  --btn-ghost-text:        var(--text-secondary);
+  --btn-ghost-border:      var(--border-medium);
+  --btn-ghost-hover-bg:    rgba(59, 102, 245, 0.04);
+  --btn-ghost-hover-border: var(--blue);
+  --btn-ghost-hover-text:  var(--blue);
+  
+  --card-bg:               var(--surface);
+  --card-border:           var(--border);
+  --card-hover-border:     var(--border2);
+  --card-shadow:           var(--shadow);
+  
+  --input-bg:              var(--surface);
+  --input-text:            var(--text-secondary);
+  --input-border:          var(--border-medium);
+  --input-placeholder:     var(--text-muted);
+  --input-focus-border:    var(--blue);
+  --input-focus-shadow:    0 0 0 3px rgba(59, 102, 245, 0.12);
+  
+  --nav-bg:                var(--navbar-bg);
+  --nav-drawer-bg:         var(--navbar-drawer-bg);
+  --nav-link:              var(--text-secondary);
+  --nav-link-hover:        var(--text-primary);
+  --nav-link-active:       var(--blue);
+  --nav-link-active-bg:    rgba(59, 102, 245, 0.05);
+  
+  --icon-color:            var(--cube-icon-color);
+  
+  --blue-hover:            var(--blue-dim);
+  --selection-bg:          var(--blue);
+  --selection-color:       #ffffff;
 }
 
 /* Smooth Theme Transitions */
@@ -82,13 +193,13 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
-  color: var(--text);
+  background: var(--page-bg);
+  color: var(--text-secondary);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-::selection { background: rgba(59,130,246,.3); color: #fff; }
+::selection { background: var(--selection-bg); color: var(--selection-color); }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
@@ -108,7 +219,7 @@ a { color: inherit; text-decoration: none; }
 .handwritten { font-family: var(--font-hand); }
 .mono        { font-family: var(--font-mono); }
 .blue        { color: var(--blue); }
-.muted       { color: var(--muted2); }
+.muted       { color: var(--text-muted); }
 
 /* ─── Buttons ───────────────────────────────────────────────────────── */
 .btn {
@@ -126,37 +237,38 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
 }
 .btn-primary {
-  background: var(--blue);
-  color: #fff;
-  box-shadow: 0 0 24px rgba(59,130,246,.35);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: var(--btn-primary-shadow);
 }
 .btn-primary:hover {
-  background: #2563eb;
-  box-shadow: 0 0 36px rgba(59,130,246,.5);
+  background: var(--btn-primary-hover-bg);
+  box-shadow: var(--btn-primary-hover-shadow);
   transform: translateY(-2px);
 }
 .btn-ghost {
-  background: transparent;
-  color: var(--text);
-  border: 1.5px solid var(--border2);
+  background: var(--btn-ghost-bg);
+  color: var(--btn-ghost-text);
+  border: 1.5px solid var(--btn-ghost-border);
 }
 .btn-ghost:hover {
-  border-color: var(--blue);
-  color: var(--blue);
+  background: var(--btn-ghost-hover-bg);
+  border-color: var(--btn-ghost-hover-border);
+  color: var(--btn-ghost-hover-text);
   transform: translateY(-2px);
 }
 
 /* ─── Cards ─────────────────────────────────────────────────────────── */
 .card {
-  background: var(--surface);
-  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
   border-radius: var(--radius-lg);
   transition: var(--transition);
 }
 .card:hover {
-  border-color: var(--border2);
+  border-color: var(--card-hover-border);
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px var(--shadow);
+  box-shadow: var(--shadow-main);
 }
 
 /* ─── Section Headings ──────────────────────────────────────────────── */
@@ -173,7 +285,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--heading);
+  color: var(--text-primary);
 }
 
 /* ─── Tag / Pill ─────────────────────────────────────────────────────── */
