@@ -296,7 +296,7 @@ export default function Skills() {
               <p className="section-label">Skills</p>
               <h1 className="section-title">What I work with</h1>
               <p className="muted" style={{ marginTop: '12px', maxWidth: '500px' }}>
-                A snapshot of my current tech stack. Hover the interactive 3D grid on the right to inspect my core technologies and levels of comfort.
+                A snapshot of my current tech stack. Hover or tap the interactive 3D grid to inspect my core technologies and levels of comfort.
               </p>
             </div>
 
@@ -329,7 +329,7 @@ export default function Skills() {
                     className="skills-cube-placeholder"
                   >
                     <span className="glow-dot" style={{ background: 'var(--blue)', boxShadow: '0 0 8px var(--blue)' }} />
-                    <p className="muted" style={{ fontSize: '0.82rem' }}>Hover the blocks on the 3D grid to inspect skills</p>
+                    <p className="muted" style={{ fontSize: '0.82rem' }}>Hover or tap the blocks on the 3D grid to inspect skills</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -356,6 +356,7 @@ export default function Skills() {
                         return (
                           <span 
                             key={iVal} 
+                            className={hoveredSkill?.name === skill?.name ? 'active' : ''}
                             style={{ 
                               '--i': iVal,
                               '--hover-color': hoverColor
@@ -365,6 +366,11 @@ export default function Skills() {
                             }}
                             onMouseLeave={() => {
                               if (skill) setHoveredSkill(null);
+                            }}
+                            onClick={() => {
+                              if (skill) {
+                                setHoveredSkill(hoveredSkill?.name === skill.name ? null : skill);
+                              }
                             }}
                           >
                             <div className="face face--top">
