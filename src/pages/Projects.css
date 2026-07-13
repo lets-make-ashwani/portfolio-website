@@ -79,7 +79,7 @@
   font-family: var(--font-mono);
 }
 
-.proj-card__name { font-size: 1.15rem; font-weight: 700; color: #fff; }
+.proj-card__name { font-size: 1.15rem; font-weight: 700; color: var(--heading); }
 .proj-card__desc { font-size: 0.86rem; color: var(--muted2); line-height: 1.65; flex: 1; }
 .proj-card__tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .proj-card__links {

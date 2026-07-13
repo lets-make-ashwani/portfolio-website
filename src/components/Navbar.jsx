@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
 
 const links = [
@@ -15,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
   const location = useLocation();
 
   useEffect(() => {
@@ -24,6 +25,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => setOpen(false), [location]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
 
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
@@ -51,6 +59,17 @@ export default function Navbar() {
         <a href="/contact" className="btn btn-primary navbar__cta">
           Hire me
         </a>
+
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          <span className="theme-toggle__wrapper">
+            <Sun className="theme-toggle__sun" size={18} aria-hidden="true" />
+            <Moon className="theme-toggle__moon" size={18} aria-hidden="true" />
+          </span>
+        </button>
 
         {/* Mobile toggle */}
         <button

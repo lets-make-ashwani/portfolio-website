@@ -158,7 +158,7 @@ export default function About() {
             <p style={{ marginTop: '16px' }}>
               My coding journey started with curiosity — "can I make this annoying task go away?" — and that 
               question has driven every project since. From auto-captioning videos to building personal finance 
-              trackers, my work is always rooted in one idea: <strong style={{ color: '#fff' }}>make it so you never have to do it manually again.</strong>
+              trackers, my work is always rooted in one idea: <strong style={{ color: 'var(--heading)' }}>make it so you never have to do it manually again.</strong>
             </p>
             <p style={{ marginTop: '16px' }}>
               I spend my time building apps, learning new frameworks, and occasionally breaking things in 

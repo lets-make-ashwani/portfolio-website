@@ -6,7 +6,7 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .navbar--scrolled {
-  background: rgba(7, 7, 9, 0.85);
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 var(--border);
@@ -22,7 +22,7 @@
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--heading);
   flex-shrink: 0;
 }
 
@@ -42,7 +42,7 @@
   transition: var(--transition);
 }
 .navbar__link:hover {
-  color: #fff;
+  color: var(--heading);
 }
 .navbar__link::after {
   content: '';
@@ -60,13 +60,96 @@
   transform: scaleX(1);
 }
 .navbar__link--active {
-  color: #fff;
+  color: var(--heading);
 }
 .navbar__link--active::after {
   transform: scaleX(1);
 }
 
 .navbar__cta { margin-left: auto; }
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  color: var(--text);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  margin-left: 0;
+}
+
+/* Ensure focus outline is present and accessible */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.theme-toggle:hover {
+  background: var(--surface);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 16px var(--blue-glow);
+}
+
+.theme-toggle__wrapper {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle__sun,
+.theme-toggle__moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              opacity 0.4s ease;
+}
+
+/* When dark mode is active, we display the Sun (suggesting click to switch to light) */
+[data-theme='dark'] .theme-toggle__sun {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+[data-theme='dark'] .theme-toggle__moon {
+  transform: rotate(-180deg) scale(0);
+  opacity: 0;
+}
+
+/* When light mode is active, we display the Moon (suggesting click to switch to dark) */
+[data-theme='light'] .theme-toggle__sun {
+  transform: rotate(180deg) scale(0);
+  opacity: 0;
+}
+[data-theme='light'] .theme-toggle__moon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* Add a continuous/subtle hover rotation hint */
+.theme-toggle:hover [data-theme='dark'] .theme-toggle__sun {
+  transform: rotate(45deg) scale(1);
+}
+.theme-toggle:hover [data-theme='light'] .theme-toggle__moon {
+  transform: rotate(15deg) scale(1);
+}
 
 .navbar__toggle {
   display: none;
@@ -76,7 +159,7 @@
   color: var(--text);
   padding: 8px;
   cursor: pointer;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 /* Drawer */
@@ -107,13 +190,15 @@
 }
 .navbar__drawer-link:hover,
 .navbar__drawer-link.active {
-  color: #fff;
+  color: var(--heading);
   background: var(--surface2);
 }
 
 @media (max-width: 768px) {
-  .navbar__links { display: none; }
-  .navbar__cta   { display: none; }
-  .navbar__toggle { display: flex; }
-  .navbar__drawer { display: flex; }
+  .navbar__inner   { gap: 12px; }
+  .navbar__links   { display: none; }
+  .navbar__cta     { display: none; }
+  .theme-toggle    { margin-left: auto; }
+  .navbar__toggle  { display: flex; }
+  .navbar__drawer  { display: flex; }
 }

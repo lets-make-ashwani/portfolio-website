@@ -33,7 +33,7 @@
 .skill-group__label {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--heading);
 }
 
 .skill-group__list {
@@ -161,7 +161,7 @@
 }
 
 .skills-cube-card__content h4 {
-  color: #fff;
+  color: var(--heading);
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 2px;
@@ -340,7 +340,7 @@
 .skills-cube-icon {
   width: 22px;
   height: 22px;
-  color: rgba(226, 226, 236, 0.4);
+  color: var(--cube-icon-color);
   fill: currentColor;
   transition: all 0.3s ease;
   pointer-events: none;

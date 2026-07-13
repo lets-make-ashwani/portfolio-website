@@ -6,6 +6,7 @@
 }
 
 :root {
+  /* Default Dark Theme */
   --bg:        #070709;
   --bg2:       #0d0d11;
   --bg3:       #111118;
@@ -21,12 +22,58 @@
   --text:      #e2e2ec;
   --muted:     #6b7280;
   --muted2:    #9ca3af;
+  --heading:   #ffffff;
+  --navbar-bg: rgba(7, 7, 9, 0.85);
+  --cube-icon-color: rgba(226, 226, 236, 0.4);
+  --shadow:    rgba(0, 0, 0, 0.4);
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-hand: 'Caveat', cursive;
   --radius:    14px;
   --radius-lg: 24px;
-  --transition: 0.25s cubic-bezier(.4,0,.2,1);
+  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+[data-theme='light'] {
+  --bg:        #f8fafc;
+  --bg2:       #f1f5f9;
+  --bg3:       #e2e8f0;
+  --surface:   #ffffff;
+  --surface2:  #f1f5f9;
+  --border:    #e2e8f0;
+  --border2:   #cbd5e1;
+  --blue:      #2563eb;
+  --blue-dim:  #1d4ed8;
+  --blue-glow: rgba(37,99,235,.15);
+  --purple:    #9333ea;
+  --green:     #16a34a;
+  --text:      #334155;
+  --muted:     #64748b;
+  --muted2:    #475569;
+  --heading:   #0f172a;
+  --navbar-bg: rgba(248, 250, 252, 0.85);
+  --cube-icon-color: rgba(51, 65, 85, 0.4);
+  --shadow:    rgba(15, 23, 42, 0.06);
+}
+
+/* Smooth Theme Transitions */
+body, 
+.navbar,
+.navbar__logo,
+.navbar__link,
+.navbar__drawer-link,
+.card,
+.btn,
+.footer,
+h1, h2, h3, h4, h5, h6,
+p,
+span,
+li,
+a {
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html { scroll-behavior: smooth; }
@@ -107,7 +154,7 @@ a { color: inherit; text-decoration: none; }
 .card:hover {
   border-color: var(--border2);
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+  box-shadow: 0 16px 48px var(--shadow);
 }
 
 /* ─── Section Headings ──────────────────────────────────────────────── */
@@ -124,7 +171,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   line-height: 1.1;
-  color: #fff;
+  color: var(--heading);
 }
 
 /* ─── Tag / Pill ─────────────────────────────────────────────────────── */
