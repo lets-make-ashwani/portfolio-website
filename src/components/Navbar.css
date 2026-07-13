@@ -168,12 +168,15 @@
   flex-direction: column;
   gap: 4px;
   padding: 0 16px;
-  background: rgba(13,13,17,0.98);
+  background: var(--navbar-drawer-bg);
   border-top: 1px solid var(--border);
   max-height: 0;
   overflow: hidden;
   visibility: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease, visibility 0.4s ease;
+  transition: max-height 0.4s ease, 
+              padding 0.4s ease, 
+              visibility 0.4s ease, 
+              background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navbar__drawer--open {
   max-height: 500px;
