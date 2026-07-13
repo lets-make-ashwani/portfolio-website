@@ -358,3 +358,30 @@
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
   transform: scale(1.15);
 }
+
+/* ─── Light Theme Overrides ─────────────────────────────────────────── */
+/* Fix hardcoded dark shadow on cube info card */
+[data-theme='light'] .skills-cube-card {
+  box-shadow: 0 4px 20px rgba(13, 17, 40, 0.08), 0 1px 4px rgba(13, 17, 40, 0.04);
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* Cube face tones in light mode — subtle elevation steps */
+[data-theme='light'] .skills-cube .face--top {
+  background: var(--surface);
+  border-color: var(--border);
+}
+[data-theme='light'] .skills-cube .face--left {
+  background: var(--surface2);
+  border-color: var(--border);
+}
+[data-theme='light'] .skills-cube .face--right {
+  background: var(--bg2);
+  border-color: var(--border);
+}
+
+/* Skill bar track in light mode */
+[data-theme='light'] .skill-item__bar {
+  background: var(--bg3);
+}

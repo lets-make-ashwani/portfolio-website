@@ -173,3 +173,24 @@
     justify-content: center;
   }
 }
+
+/* ─── Light Theme Overrides ─────────────────────────────────────────── */
+[data-theme='light'] .about-intro__avatar-frame {
+  box-shadow: 0 0 32px rgba(74, 94, 232, 0.14);
+}
+
+[data-theme='light'] .about-live-resume {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+[data-theme='light'] .about-live-resume__content h2,
+[data-theme='light'] .about-live-resume__content h3,
+[data-theme='light'] .about-live-resume__content h4 {
+  border-bottom-color: var(--border);
+}
+
+[data-theme='light'] .about-timeline__item::before {
+  background: linear-gradient(to bottom, var(--border2), transparent);
+}
+

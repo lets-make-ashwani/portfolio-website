@@ -90,3 +90,28 @@
   .contact-form__row { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 24px; }
 }
+
+/* ─── Light Theme Overrides ─────────────────────────────────────────── */
+/* Soften the green glow on sent state for light backgrounds */
+[data-theme='light'] .contact-form__submit.sent {
+  background: var(--green);
+  box-shadow: 0 2px 16px rgba(14, 165, 114, 0.25);
+}
+
+/* Social cards: ensure they look elevated, not sunken, on light bg */
+[data-theme='light'] .contact-social-card {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 1px 4px rgba(13, 17, 40, 0.05);
+}
+
+[data-theme='light'] .contact-social-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 16px rgba(74, 94, 232, 0.12);
+}
+
+[data-theme='light'] .contact-location {
+  background: var(--surface);
+  border-color: var(--border);
+}
+

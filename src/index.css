@@ -91,82 +91,125 @@
 }
 
 [data-theme='light'] {
-  /* Brand/Core colors - Redesigned for Light Mode */
-  --bg:        #f8fafc;
-  --bg2:       #f1f5f9;
-  --bg3:       #e2e8f0;
-  --surface:   #ffffff;
-  --surface2:  #f1f5f9;
-  --border:    #e2e8f0;
-  --border2:   #cbd5e1;
-  --blue:      #3b66f5; /* Custom premium royal/indigo brand blue */
-  --blue-dim:  #1d4ed8;
-  --blue-glow: rgba(59, 102, 245, 0.12);
-  --purple:    #8b5cf6; /* Softer light-optimized purple */
-  --green:     #10b981; /* Premium green */
-  --text:      #475569; /* Slate-600 */
-  --muted:     #64748b; /* Slate-500 */
-  --muted2:    #334155; /* Slate-700 */
-  --heading:   #0f172a; /* Slate-900 */
-  --navbar-bg: rgba(248, 250, 252, 0.85);
-  --navbar-drawer-bg: rgba(248, 250, 252, 0.98);
-  --cube-icon-color: rgba(71, 85, 105, 0.4);
-  --shadow:    rgba(15, 23, 42, 0.05);
+  /* ─── Brand / Base Palette ─────────────────────────────────────────── */
+  /* Warm slate backgrounds — not cold grey, not pure white */
+  --bg:        #f5f6fa;           /* Page background: warm off-white                */
+  --bg2:       #eef0f6;           /* Slightly deeper surface (inputs, inset areas)  */
+  --bg3:       #e3e6ef;           /* Deepest base layer (pressed, wells)            */
+  --surface:   #ffffff;           /* Cards, panels: crisp white                     */
+  --surface2:  #f0f2f8;           /* Elevated/nested surface (tags, badges, pills)  */
 
-  /* Semantic Design Tokens - Light Theme Redesign */
+  /* ─── Borders & Dividers ──────────────────────────────────────────── */
+  --border:    #dde1ec;           /* Subtle border — visible but not harsh          */
+  --border2:   #c8cedf;           /* Medium border — dividers, control outlines     */
+
+  /* ─── Brand Accent Colors ─────────────────────────────────────────── */
+  /* Royal indigo-blue — reduced from dark's electric #3b82f6             */
+  --blue:      #4a5ee8;           /* Primary action & accent                        */
+  --blue-dim:  #3347c8;           /* Deeper state for pressed/active                */
+  --blue-glow: rgba(74, 94, 232, 0.10); /* Light-safe ambient glow                 */
+
+  /* Softer violet — not neon, works on white                             */
+  --purple:    #7c5cde;
+
+  /* Muted emerald — lower saturation, easier on eyes in light mode       */
+  --green:     #0ea572;
+
+  /* ─── Text Scale ─────────────────────────────────────────────────── */
+  /* Dark-on-light hierarchy: deep → medium → soft → hint                 */
+  --heading:   #0d1117;           /* Primary headings — near-black slate            */
+  --text:      #3d4663;           /* Body text — dark ink blue                      */
+  --muted2:    #526280;           /* Secondary/supporting text                      */
+  --muted:     #7b8db0;           /* Tertiary / placeholder / metadata              */
+
+  /* ─── Navigation ────────────────────────────────────────────────── */
+  --navbar-bg:         rgba(245, 246, 250, 0.88);
+  --navbar-drawer-bg:  rgba(245, 246, 250, 0.99);
+
+  /* ─── Misc ──────────────────────────────────────────────────────── */
+  /* Icon overlay on cube faces — legible on white                       */
+  --cube-icon-color:   rgba(61, 70, 99, 0.38);
+  /* Shadows — soft ink-blue tinted, never black on white                */
+  --shadow:            rgba(13, 17, 40, 0.07);
+
+  /* ═══════════════════════════════════════════════════════════════════
+     Semantic Design Tokens — Light Theme
+     Every UI component pulls from these tokens, not raw values.
+     ══════════════════════════════════════════════════════════════════ */
+
+  /* Page & Surface */
   --page-bg:               var(--bg);
   --surface-bg:            var(--surface);
-  --surface-bg2:           #f8fafc;
-  
+  --surface-bg2:           var(--surface2);
+
+  /* Text */
   --text-primary:          var(--heading);
   --text-secondary:        var(--text);
-  --text-muted:            var(--muted);
+  --text-muted:            var(--muted2);
   --text-dim:              var(--muted);
-  
+
+  /* Borders */
   --border-subtle:         var(--border);
   --border-medium:         var(--border2);
-  
-  --shadow-main:           0 16px 48px var(--shadow), 0 0 20px rgba(59, 102, 245, 0.02);
-  --shadow-glow:           0 4px 16px rgba(59, 102, 245, 0.16);
-  --shadow-glow-hover:     0 8px 24px rgba(59, 102, 245, 0.28);
-  
-  --btn-primary-bg:        var(--blue);
-  --btn-primary-text:      #ffffff;
-  --btn-primary-shadow:    var(--shadow-glow);
-  --btn-primary-hover-bg:  #254adb;
+
+  /* Shadows — layered card shadow + subtle brand tint */
+  --shadow-main:           0 4px 24px rgba(13, 17, 40, 0.08),
+                           0 1px 4px  rgba(13, 17, 40, 0.05);
+  --shadow-glow:           0 4px 16px rgba(74, 94, 232, 0.18);
+  --shadow-glow-hover:     0 8px 28px rgba(74, 94, 232, 0.28);
+
+  /* Primary Button */
+  --btn-primary-bg:           var(--blue);
+  --btn-primary-text:         #ffffff;
+  --btn-primary-shadow:       var(--shadow-glow);
+  --btn-primary-hover-bg:     var(--blue-dim);
   --btn-primary-hover-shadow: var(--shadow-glow-hover);
-  
-  --btn-ghost-bg:          transparent;
-  --btn-ghost-text:        var(--text-secondary);
-  --btn-ghost-border:      var(--border-medium);
-  --btn-ghost-hover-bg:    rgba(59, 102, 245, 0.04);
-  --btn-ghost-hover-border: var(--blue);
-  --btn-ghost-hover-text:  var(--blue);
-  
-  --card-bg:               var(--surface);
-  --card-border:           var(--border);
-  --card-hover-border:     var(--border2);
-  --card-shadow:           var(--shadow);
-  
-  --input-bg:              var(--surface);
-  --input-text:            var(--text-secondary);
-  --input-border:          var(--border-medium);
-  --input-placeholder:     var(--text-muted);
-  --input-focus-border:    var(--blue);
-  --input-focus-shadow:    0 0 0 3px rgba(59, 102, 245, 0.12);
-  
-  --nav-bg:                var(--navbar-bg);
-  --nav-drawer-bg:         var(--navbar-drawer-bg);
-  --nav-link:              var(--text-secondary);
-  --nav-link-hover:        var(--text-primary);
-  --nav-link-active:       var(--blue);
-  --nav-link-active-bg:    rgba(59, 102, 245, 0.05);
-  
-  --icon-color:            var(--cube-icon-color);
-  
-  --blue-hover:            var(--blue-dim);
-  --selection-bg:          var(--blue);
-  --selection-color:       #ffffff;
+
+  /* Ghost Button */
+  --btn-ghost-bg:             transparent;
+  --btn-ghost-text:           var(--text);
+  --btn-ghost-border:         var(--border2);
+  --btn-ghost-hover-bg:       rgba(74, 94, 232, 0.05);
+  --btn-ghost-hover-border:   var(--blue);
+  --btn-ghost-hover-text:     var(--blue);
+
+  /* Cards */
+  --card-bg:                  var(--surface);
+  --card-border:              var(--border);
+  --card-hover-border:        var(--border2);
+  --card-shadow:              var(--shadow);
+
+  /* Inputs */
+  --input-bg:                 var(--surface);
+  --input-text:               var(--text);
+  --input-border:             var(--border2);
+  --input-placeholder:        var(--muted);
+  --input-focus-border:       var(--blue);
+  --input-focus-shadow:       0 0 0 3px rgba(74, 94, 232, 0.13);
+
+  /* Navigation */
+  --nav-bg:                   var(--navbar-bg);
+  --nav-drawer-bg:            var(--navbar-drawer-bg);
+  --nav-link:                 var(--muted2);
+  --nav-link-hover:           var(--heading);
+  --nav-link-active:          var(--blue);
+  --nav-link-active-bg:       rgba(74, 94, 232, 0.06);
+
+  /* Icons */
+  --icon-color:               var(--cube-icon-color);
+
+  /* Interactive States */
+  --blue-hover:               var(--blue-dim);
+  --selection-bg:             rgba(74, 94, 232, 0.20);
+  --selection-color:          var(--heading);
+
+  /* Focus Ring */
+  --focus-ring:               0 0 0 3px rgba(74, 94, 232, 0.25);
+
+  /* Disabled */
+  --disabled-bg:              var(--bg3);
+  --disabled-text:            var(--muted);
+  --disabled-border:          var(--border);
 }
 
 /* Smooth Theme Transitions */
@@ -347,3 +390,37 @@ a { color: inherit; text-decoration: none; }
   border-top: 1.5px solid var(--border);
   margin: 80px 0;
 }
+
+/* ─── Light Theme Global Component Overrides ────────────────────── */
+
+/* Noise texture: reduce opacity on light — grain on white is much more visible */
+[data-theme='light'] .noise::after {
+  opacity: 0.15;
+}
+
+/* Glow dot: keep green but soften the bloom for light backgrounds */
+[data-theme='light'] .glow-dot {
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+
+/* Tag pill: use proper light-surface colors */
+[data-theme='light'] .tag {
+  background: var(--surface2);
+  border-color: var(--border2);
+  color: var(--blue);
+}
+
+/* Card hover shadow — light-optimized layered shadow */
+[data-theme='light'] .card:hover {
+  box-shadow: 0 4px 24px rgba(13, 17, 40, 0.08), 0 1px 4px rgba(13, 17, 40, 0.04);
+}
+
+/* Scrollbar thumb in light mode */
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: var(--border2);
+}
+

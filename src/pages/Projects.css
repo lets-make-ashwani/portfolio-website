@@ -117,3 +117,18 @@
 @media (max-width: 600px) {
   .projects-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── Light Theme Overrides ─────────────────────────────────────────── */
+/* Active filter pill: softer glow & slightly lighter background */
+[data-theme='light'] .projects-filter-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(74, 94, 232, 0.28);
+}
+
+/* Disabled link: more readable placeholder text in light mode */
+[data-theme='light'] .proj-card__link--disabled {
+  color: var(--muted);
+}
+

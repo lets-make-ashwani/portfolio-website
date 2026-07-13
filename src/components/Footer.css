@@ -108,3 +108,28 @@
     gap: 24px 16px;
   }
 }
+
+/* ─── Light Theme Overrides ─────────────────────────────────────────── */
+[data-theme='light'] .footer {
+  background: var(--bg);
+  border-top-color: var(--border);
+}
+
+[data-theme='light'] .footer__social {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: 0 1px 3px rgba(13, 17, 40, 0.05);
+}
+
+[data-theme='light'] .footer__social:hover {
+  background: var(--surface2);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 2px 10px rgba(74, 94, 232, 0.14);
+  transform: translateY(-2px);
+}
+
+[data-theme='light'] .footer__bottom {
+  border-top-color: var(--border);
+}
+
