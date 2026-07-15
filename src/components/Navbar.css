@@ -24,6 +24,23 @@
   letter-spacing: -0.02em;
   color: var(--text-primary);
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar__logo.effect-elastic span {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.5), color 0.3s ease;
+  transform-origin: bottom;
+}
+
+.navbar__logo.effect-elastic:hover span {
+  transform: scaleY(1.25) scaleX(0.9);
+}
+
+.navbar__logo.effect-elastic:hover span:hover {
+  transform: scaleY(1.5) scaleX(0.85) translateY(-4px);
+  color: var(--blue);
 }
 
 .navbar__links {

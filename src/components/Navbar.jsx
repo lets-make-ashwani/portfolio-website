@@ -36,8 +36,8 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
-        <NavLink to="/" className="navbar__logo">
-          ashwani<span className="blue">_</span>
+        <NavLink to="/" className="navbar__logo effect-elastic">
+          <span>a</span><span>s</span><span>h</span><span>w</span><span>a</span><span>n</span><span>i</span><span className="blue">_</span>
         </NavLink>
 
         {/* Desktop nav */}
