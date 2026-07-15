@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import { 
   ArrowRight, Zap, Coffee, Code2, ExternalLink,
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
@@ -10,6 +11,8 @@ import { Link } from 'react-router-dom';
 import { PROJECTS, GITHUB_URL, AVATAR_URL } from '../data/projects';
 import './Home.css';
 import useSEO from '../hooks/useSEO';
+import useGitHubStats from '../hooks/useGitHubStats';
+import useCountUp from '../hooks/useCountUp';
 
 const iconMap = {
   Coins, BookOpen, GraduationCap, CalendarCheck, Tv, QrCode, Cpu, 
@@ -26,6 +29,77 @@ const fadeUp = {
 };
 
 const featured = PROJECTS.filter(p => p.featured);
+
+/* ─── Animated stat item ─── */
+function AnimatedStat({ target, suffix = '', label, delay = 0, isInfinity = false }) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  const count = useCountUp(isInfinity ? 0 : (target ?? 0), 1600, inView && !isInfinity);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
+      { threshold: 0.4 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="home-stats__item"
+      custom={delay}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true }}
+    >
+      <span className="home-stats__n blue">
+        {isInfinity ? '∞' : (target === null ? '…' : `${count}${suffix}`)}
+      </span>
+      <span className="home-stats__label">{label}</span>
+    </motion.div>
+  );
+}
+
+/* ─── Stats bar that pulls live GitHub data ─── */
+function StatsBar() {
+  const { totalRepos, liveProjects, languages, loading } = useGitHubStats();
+
+  return (
+    <section className="home-stats">
+      <div className="container home-stats__grid">
+        <AnimatedStat
+          target={loading ? null : totalRepos}
+          suffix="+"
+          label="GitHub Repos"
+          delay={0}
+        />
+        <AnimatedStat
+          target={loading ? null : liveProjects}
+          suffix="+"
+          label="Live Projects"
+          delay={1}
+        />
+        <AnimatedStat
+          target={loading ? null : languages}
+          suffix=""
+          label="Core Languages"
+          delay={2}
+        />
+        <AnimatedStat
+          target={0}
+          label="Cold Coffees"
+          delay={3}
+          isInfinity
+        />
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   useSEO({ 
@@ -190,22 +264,7 @@ export default function Home() {
       </section>
 
       {/* ── Stats bar ── */}
-      <section className="home-stats">
-        <div className="container home-stats__grid">
-          {[
-            { n: '11+', label: 'GitHub Repos' },
-            { n: '5+',  label: 'Live Projects' },
-            { n: '3',   label: 'Core Languages' },
-            { n: '∞',   label: 'Cold Coffees' },
-          ].map((s, i) => (
-            <motion.div key={s.label} className="home-stats__item"
-              custom={i} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>
-              <span className="home-stats__n blue">{s.n}</span>
-              <span className="home-stats__label">{s.label}</span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <StatsBar />
 
       {/* ── Featured Projects ── */}
       <section className="home-featured">
