@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import SplashCursor from './components/SplashCursor';
 
 import { useEffect } from 'react';
 
@@ -40,6 +41,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <div className="noise">
+        <SplashCursor />
         <Navbar />
         <main>
           <AnimatedRoutes />
@@ -49,3 +51,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
