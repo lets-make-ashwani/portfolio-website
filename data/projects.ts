@@ -72,7 +72,7 @@ export const PROJECTS: Project[] = [
     repo: 'uptvlive',
     description: 'A live streaming / IPTV web interface for UP TV channels — built to make regional content accessible online without cable.',
     lang: 'JavaScript',
-    live: 'https://uptvlive.vercel.app',
+    live: 'https://uptvlive.com',
     github: 'https://github.com/lets-make-ashwani/uptvlive',
     tags: ['JavaScript', 'Streaming', 'IPTV'],
     icon: 'Tv',
