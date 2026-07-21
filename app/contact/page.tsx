@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, MessageCircle, MapPin, Send, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle } from 'lucide-react';
 import { GitHubIcon, LinkedinIcon } from '@/components/BrandIcons';
 import { GITHUB_URL } from '@/data/projects';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -12,7 +12,6 @@ const socials = [
   { icon: <Mail size={20} />, label: 'Email', val: 'contact@ashwani.dev', href: 'mailto:contact@ashwani.dev', color: '#3b82f6' },
   { icon: <GitHubIcon size={20} />, label: 'GitHub', val: 'lets-make-ashwani', href: GITHUB_URL, color: '#e2e2ec' },
   { icon: <LinkedinIcon size={20} />, label: 'LinkedIn', val: 'Ashwani Vishwakarma', href: 'https://www.linkedin.com/in/ashwani-vishwakarma-54104432a/', color: '#0a66c2' },
-  { icon: <MessageCircle size={20} />, label: 'Telegram', val: '@ashwani_dev', href: 'https://t.me/ashwani_dev', color: '#229ed9' },
 ];
 
 export default function ContactPage() {
