@@ -65,7 +65,7 @@ export default function AboutPage() {
   const [liveResumeHtml, setLiveResumeHtml] = useState<string | null>(null);
 
   useEffect(() => {
-    const url = 'https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/mobilebasic';
+    const url = 'https://docs.google.com/document/d/1r1ETRaeFBOa8N3huz29AaBHIWA88QnS4BCkcZv_11Mw/mobilebasic';
     const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
 
     fetch(proxyUrl)
@@ -136,7 +136,7 @@ export default function AboutPage() {
             </a>
             <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
               <a
-                href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/edit?usp=sharing"
+                href="https://docs.google.com/document/d/1r1ETRaeFBOa8N3huz29AaBHIWA88QnS4BCkcZv_11Mw/edit?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 View Resume
               </a>
               <a
-                href="https://docs.google.com/document/d/1c4_XEAG3VqLMFI1BoDBg2PbbC79UUm3UuAyIExvwYuc/export?format=pdf"
+                href="https://docs.google.com/document/d/1r1ETRaeFBOa8N3huz29AaBHIWA88QnS4BCkcZv_11Mw/export?format=pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
