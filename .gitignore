@@ -1,22 +1,23 @@
 # Dependencies
 node_modules/
 
-# Build output
-dist/
+# Next.js build output
+.next/
+out/
 build/
+dist/
 
-# Vite cache
-.vite/
-
-# Environment files
+# Next.js cache & env
 .env
 .env.local
-.env.production
+.env.development.local
+.env.test.local
+.env.production.local
+*.tsbuildinfo
 
-# OS files
+# OS & Editor files
 .DS_Store
 Thumbs.db
-
-# Editor
 .vscode/
+.idea/
 *.swp
