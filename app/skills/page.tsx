@@ -275,6 +275,26 @@ const fadeUp = {
   show: (i = 0) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.45 } }),
 };
 
+const listVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.05,
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -8 },
+  show: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { type: 'spring' as const, stiffness: 100, damping: 15 } 
+  }
+};
+
 export default function SkillsPage() {
   const [hoveredSkill, setHoveredSkill] = useState<typeof cubeSkills[0] | null>(null);
 
@@ -406,26 +426,51 @@ export default function SkillsPage() {
             <motion.article
               key={group.label}
               className="skill-group card"
-              custom={gi * 0.2}
+              custom={gi * 0.15}
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              whileHover={{ y: -6, borderColor: group.color, boxShadow: `0 12px 30px ${group.color}15` }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               <div className="skill-group__header">
                 <span className="skill-group__emoji" aria-hidden="true">{group.emoji}</span>
                 <h2 className="skill-group__label">{group.label}</h2>
               </div>
-              <div className="skill-group__list">
+              <motion.div 
+                className="skill-group__list"
+                variants={listVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+              >
                 {group.skills.map((s, si) => (
-                  <div key={s.name} className="skill-item">
-                    <div className="skill-item__top">
+                  <motion.div 
+                    key={s.name} 
+                    className="skill-item"
+                    variants={itemVariants}
+                    whileHover={{ x: 6 }}
+                    transition={{ type: 'spring' as const, stiffness: 300, damping: 20 }}
+                  >
+                    <div className="skill-item__top" style={{ justifyContent: 'flex-start', gap: '8px' }}>
+                      <span 
+                        className="skill-item__dot" 
+                        style={{ 
+                          display: 'inline-block', 
+                          width: '6px', 
+                          height: '6px', 
+                          borderRadius: '50%', 
+                          backgroundColor: group.color,
+                          boxShadow: `0 0 8px ${group.color}`
+                        }} 
+                      />
                       <span className="skill-item__name">{s.name}</span>
                     </div>
                     <p className="skill-item__note">{s.note}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.article>
           ))}
         </div>
