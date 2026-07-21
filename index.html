@@ -13,7 +13,7 @@
     <meta charset="UTF-8" />
     <script>
       (function() {
-        const theme = localStorage.getItem('theme') || 'dark';
+        const theme = sessionStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

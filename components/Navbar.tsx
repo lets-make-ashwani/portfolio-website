@@ -21,7 +21,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') || 'dark';
+    const storedTheme = sessionStorage.getItem('theme') || 'dark';
     setTheme(storedTheme);
     document.documentElement.setAttribute('data-theme', storedTheme);
   }, []);
@@ -40,7 +40,7 @@ export default function Navbar() {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
     document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('theme', nextTheme);
+    sessionStorage.setItem('theme', nextTheme);
   };
 
   return (
