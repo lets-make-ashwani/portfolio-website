@@ -45,9 +45,9 @@ const timeline = [
     icon: '🎓',
   },
   {
-    year: '2026 — Present',
+    year: 'Apr 2026 — Jun 2026',
     title: 'IT Intern — Brandmate Digital',
-    desc: 'Developing, maintaining, and optimizing websites and landing pages for client businesses. Implementing responsive layouts, plugin integrations, SEO, and debugging performance bottlenecks.',
+    desc: 'Completed IT Internship at Brandmate Digital. Developed, maintained, and optimized websites and landing pages for client businesses. Implemented responsive layouts, plugin integrations, SEO, and debugged performance bottlenecks.',
     icon: '💼',
   },
 ];
@@ -127,7 +127,7 @@ export default function AboutPage() {
             </div>
             <div className="about-intro__meta-item">
               <span className="glow-dot" aria-hidden="true" />
-              <span style={{ color: '#22c55e' }}>Available for freelance</span>
+              <span style={{ color: '#22c55e' }}>Open to opportunities</span>
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%', maxWidth: '240px' }}>

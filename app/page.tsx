@@ -34,7 +34,7 @@ export default function HomePage() {
           <div className="home-hero__content">
             <div className="home-hero__badge">
               <span className="glow-dot" aria-hidden="true" />
-              <span>Open to freelance & collabs</span>
+              <span>Open to work & collabs</span>
             </div>
 
             <p className="handwritten home-hero__greeting">

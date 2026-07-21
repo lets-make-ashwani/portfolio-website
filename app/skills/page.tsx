@@ -299,7 +299,7 @@ export default function SkillsPage() {
               <p className="section-label">Skills</p>
               <h1 className="section-title">What I work with</h1>
               <p className="muted" style={{ marginTop: '12px', maxWidth: '500px' }}>
-                A snapshot of my current tech stack. Hover or tap the interactive 3D grid to inspect my core technologies and levels of comfort.
+                A snapshot of my current tech stack. Hover or tap the interactive 3D grid to inspect my core technologies and tools.
               </p>
             </header>
 
@@ -322,10 +322,7 @@ export default function SkillsPage() {
                     />
                     <div className="skills-cube-card__content">
                       <h4>{hoveredSkill.name}</h4>
-                      <p className="skills-cube-card__pct" style={{ color: hoveredSkill.color }}>
-                        {hoveredSkill.level}% proficiency
-                      </p>
-                      <p className="skills-cube-card__note">{hoveredSkill.note}</p>
+                      <p className="skills-cube-card__note" style={{ marginTop: '4px' }}>{hoveredSkill.note}</p>
                     </div>
                   </motion.div>
                 ) : (
@@ -403,8 +400,8 @@ export default function SkillsPage() {
           </motion.div>
         </div>
 
-        {/* Proficiency Skill Groups */}
-        <div className="skills-grid" aria-label="Skills proficiency levels">
+        {/* Skill Groups */}
+        <div className="skills-grid" aria-label="Skills categories">
           {skillGroups.map((group, gi) => (
             <motion.article
               key={group.label}
@@ -424,19 +421,6 @@ export default function SkillsPage() {
                   <div key={s.name} className="skill-item">
                     <div className="skill-item__top">
                       <span className="skill-item__name">{s.name}</span>
-                      <span className="skill-item__pct" style={{ color: group.color }}>{s.level}%</span>
-                    </div>
-                    <div className="skill-item__bar">
-                      <motion.div
-                        className="skill-item__fill"
-                        style={{
-                          background: `linear-gradient(90deg, ${group.color}99, ${group.color})`,
-                        }}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${s.level}%` }}
-                        transition={{ delay: si * 0.1 + gi * 0.05, duration: 0.8, ease: 'easeOut' }}
-                        viewport={{ once: true }}
-                      />
                     </div>
                     <p className="skill-item__note">{s.note}</p>
                   </div>

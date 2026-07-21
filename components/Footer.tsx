@@ -60,7 +60,7 @@ export default function Footer() {
           <p className="footer__nav-title">Status</p>
           <div className="footer__status-item">
             <span className="glow-dot" aria-hidden="true" />
-            <span>Available for freelance</span>
+            <span>Open to opportunities</span>
           </div>
           <p className="footer__status-item" style={{ color: 'var(--muted2)', fontSize: '0.85rem' }}>
             📍 Kanpur, India

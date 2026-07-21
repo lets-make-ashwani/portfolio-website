@@ -92,7 +92,7 @@ export default function ContactPage() {
         </p>
         <div className="contact-header__status">
           <span className="glow-dot" aria-hidden="true" />
-          <span className="muted" style={{ fontSize: '0.85rem' }}>Currently open to freelance & collaborations</span>
+          <span className="muted" style={{ fontSize: '0.85rem' }}>Currently open to new opportunities & collaborations</span>
         </div>
       </header>
 

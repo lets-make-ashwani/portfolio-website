@@ -12,7 +12,7 @@ const DEFAULT_FAQS: FAQItem[] = [
     answer: 'Ashwani specializes in Python (FastAPI, Django, Asyncio), TypeScript, React, Next.js (App Router), Node.js, PostgreSQL, and custom web scraping/automation frameworks.',
   },
   {
-    question: 'How can I hire Ashwani for freelance software or bot development?',
+    question: 'How can I hire or collaborate with Ashwani for software or bot development?',
     answer: 'You can contact Ashwani directly through the Contact page on ashwani.online or by emailing contact@ashwani.dev. He is available for full-stack web development, Python automation projects, and API integrations.',
   },
   {

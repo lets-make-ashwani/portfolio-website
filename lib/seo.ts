@@ -99,7 +99,7 @@ export function generatePersonSchema() {
     jobTitle: 'Software Developer & Automation Specialist',
     worksFor: {
       '@type': 'Organization',
-      name: 'Freelance / Self-Employed',
+      name: 'Brandmate Digital',
     },
     alumniOf: {
       '@type': 'EducationalOrganization',
